@@ -32,7 +32,7 @@ nmap ga <Plug>(EasyAlign)
 """ Code completion.
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-vimtex', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-rls', {'do': 'yarn install --frozen-lockfile'}
+Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
 
@@ -99,6 +99,9 @@ Plug 'lambdalisue/suda.vim' " Write as sudo, workaround for https://github.com/n
 cmap w!! w suda://%
 
 Plug 'tpope/vim-fugitive' " Git support inside vim.
+
+Plug 'cespare/vim-toml' " Formatting for (Cargo).toml files.
+Plug 'rust-lang/rust.vim' " Formatting for rust files.
 
 " Initialize plugin system
 call plug#end()

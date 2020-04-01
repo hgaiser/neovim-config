@@ -12,6 +12,7 @@ set nrformats=bin,hex,alpha        " Also consider the alphabet when incrementin
 set updatetime=500                 " Reduce the time before a backup is saved to disk.
 set relativenumber                 " Show relative line numbers.
 set undofile                       " Remain persistent undo file between vim sessions.
+set splitbelow                     " Split files below current open file.
 
 colorscheme custom " Colorscheme
 
@@ -110,7 +111,7 @@ call plug#end()
 
 """""""""""" Other remaps
 
-" Remap Ctrl+W, <hjkl> to Ctrl+<hjkl>
+" Remap Ctrl+w, <hjkl> to Ctrl+<hjkl>
 nnoremap <c-h> <c-w>h
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
@@ -119,3 +120,15 @@ nnoremap <c-l> <c-w>l
 " Map F5 to run last external command.
 nnoremap <F5> :!!<CR>
 
+" Map Esc to exit terminal insert mode.
+tnoremap <Esc> <C-\><C-n>
+
+" Map Ctrl+<hjkl> to exit insert mode and move window.
+tnoremap <c-h> <C-\><C-n><c-w>h
+tnoremap <c-j> <C-\><C-n><c-w>j
+tnoremap <c-k> <C-\><C-n><c-w>k
+tnoremap <c-l> <C-\><C-n><c-w>l
+
+" Add SplitTerminal to open a new split terminal.
+command! SplitTerminal 10split | :term
+autocmd BufEnter term://* startinsert

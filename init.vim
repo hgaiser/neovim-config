@@ -13,6 +13,7 @@ set updatetime=500                 " Reduce the time before a backup is saved to
 set relativenumber                 " Show relative line numbers.
 set undofile                       " Remain persistent undo file between vim sessions.
 set splitbelow                     " Split files below current open file.
+set splitright                     " Split files right of current open file.
 
 colorscheme custom " Colorscheme
 

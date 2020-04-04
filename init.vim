@@ -78,22 +78,6 @@ Plug 'preservim/nerdtree'
 map <Leader>n :NERDTreeToggle<CR>
 map ` :NERDTreeToggle<CR>
 
-" Git symbols for NERDTree.
-Plug 'Xuyuanp/nerdtree-git-plugin'
-let g:NERDTreeIndicatorMapCustom = {
-	\ "Modified"  : "✹",
-	\ "Staged"    : "✚",
-	\ "Untracked" : "✭",
-	\ "Renamed"   : "➜",
-	\ "Unmerged"  : "═",
-	\ "Deleted"   : "✖",
-	\ "Dirty"     : "✗",
-	\ "Clean"     : "✔︎",
-	\ 'Ignored'   : '☒',
-	\ "Unknown"   : "?"
-\ }
-
-
 Plug 'tpope/vim-surround' " Extension for changing surroundings.
 Plug 'tpope/vim-repeat'   " Allow repeating of commands like change surroundings.
 

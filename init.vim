@@ -14,6 +14,7 @@ set relativenumber                 " Show relative line numbers.
 set undofile                       " Remain persistent undo file between vim sessions.
 set splitbelow                     " Split files below current open file.
 set splitright                     " Split files right of current open file.
+set signcolumn=yes                 " Always show the sign column (GitGutter / Coc).
 
 """""""""""" Install extensions.
 
@@ -91,6 +92,10 @@ nmap ga <Plug>(EasyAlign)
 let g:NERDSpaceDelims = 1
 " Align line-wise comment delimiters flush left instead of following code indentation.
 let g:NERDDefaultAlign = 'left'
+" Use compact syntax for prettified multi-line comments.
+let g:NERDCompactSexyComs = 1
+" Enable NERDCommenterToggle to check all selected lines is commented or not.
+let g:NERDToggleCheckAllLines = 1
 nmap <silent>// <leader>c<space>
 vmap <silent>// <leader>c<space>
 

@@ -15,21 +15,10 @@ set undofile                       " Remain persistent undo file between vim ses
 set splitbelow                     " Split files below current open file.
 set splitright                     " Split files right of current open file.
 
-colorscheme custom " Colorscheme
-
 """""""""""" Install extensions.
 
 " Specify a directory for plugins
 call plug#begin(stdpath('data') . '/plugged')
-
-" Fuzzy finding tools.
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-
-" Alignment extension.
-Plug 'junegunn/vim-easy-align'
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
 
 """ Code completion.
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -37,6 +26,75 @@ Plug 'neoclide/coc-vimtex', {'do': 'yarn install --frozen-lockfile'}
 Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
+
+Plug 'junegunn/fzf.vim'        " Fuzzy finding tools.
+Plug 'junegunn/vim-easy-align' " Alignment around operator
+Plug 'preservim/nerdcommenter' " Comment code
+Plug 'preservim/nerdtree'      " File tree.
+Plug 'tpope/vim-surround'      " Extension for changing surroundings.
+Plug 'tpope/vim-repeat'        " Allow repeating of commands like change surroundings.
+Plug 'lambdalisue/suda.vim'    " Write as sudo, workaround for https://github.com/neovim/neovim/issues/8527 .
+Plug 'tpope/vim-fugitive'      " Git support inside vim.
+Plug 'cespare/vim-toml'        " Formatting for (Cargo).toml files.
+Plug 'rust-lang/rust.vim'      " Formatting for rust files.
+Plug 'airblade/vim-gitgutter'  " Git gutter.
+
+" Initialize plugin system
+call plug#end()
+
+"""""""""""" End install extensions.
+
+" Remap Ctrl+w, <hjkl> to Ctrl+<hjkl>
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+
+" Map F5 to run last external command.
+nnoremap <F5> :!!<CR>
+
+" Map Esc to exit terminal insert mode.
+tnoremap <Esc> <C-\><C-n>
+
+" Map Ctrl+<hjkl> to exit insert mode and move window.
+tnoremap <c-h> <C-\><C-n><c-w>h
+tnoremap <c-j> <C-\><C-n><c-w>j
+tnoremap <c-k> <C-\><C-n><c-w>k
+tnoremap <c-l> <C-\><C-n><c-w>l
+
+" Add SplitTerminal to open a new split terminal.
+command! SplitTerminal 10split | :term
+autocmd BufEnter term://* startinsert
+
+" Color scheme.
+colorscheme custom " Colorscheme
+set termguicolors
+
+" Git gutter colors
+let g:gitgutter_sign_added = '▌'
+let g:gitgutter_sign_modified = '▌'
+let g:gitgutter_sign_removed = '▁'
+let g:gitgutter_sign_removed_first_line = '▌'
+let g:gitgutter_sign_modified_removed = '▌'
+let g:gitgutter_map_keys = 0
+let g:gitgutter_realtime = 1
+highlight GitGutterDelete guifg=#F97CA9
+highlight GitGutterAdd    guifg=#BEE275
+highlight GitGutterChange guifg=#96E1EF
+
+" Alignment extension.
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
+" Comment code.
+" Add spaces after comment delimiters by default.
+let g:NERDSpaceDelims = 1
+" Align line-wise comment delimiters flush left instead of following code indentation.
+let g:NERDDefaultAlign = 'left'
+nmap <silent>// <leader>c<space>
+vmap <silent>// <leader>c<space>
+
+" Code completion
 
 " Ctrl+Space to trigger Coc.
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -71,62 +129,9 @@ endfunction
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 
-"""
-
-" File tree.
-Plug 'preservim/nerdtree'
+" NERDTree.
 map <Leader>n :NERDTreeToggle<CR>
 map ` :NERDTreeToggle<CR>
 
-Plug 'tpope/vim-surround' " Extension for changing surroundings.
-Plug 'tpope/vim-repeat'   " Allow repeating of commands like change surroundings.
-
-Plug 'lambdalisue/suda.vim' " Write as sudo, workaround for https://github.com/neovim/neovim/issues/8527 .
+" Sudo write.
 cmap w!! w suda://%
-
-Plug 'tpope/vim-fugitive' " Git support inside vim.
-
-Plug 'cespare/vim-toml' " Formatting for (Cargo).toml files.
-Plug 'rust-lang/rust.vim' " Formatting for rust files.
-
-" Git gutter.
-Plug 'airblade/vim-gitgutter'
-let g:gitgutter_sign_added = '▌'
-let g:gitgutter_sign_modified = '▌'
-let g:gitgutter_sign_removed = '▁'
-let g:gitgutter_sign_removed_first_line = '▌'
-let g:gitgutter_sign_modified_removed = '▌'
-let g:gitgutter_map_keys = 0
-let g:gitgutter_realtime = 1
-highlight GitGutterDelete guifg=#F97CA9
-highlight GitGutterAdd    guifg=#BEE275
-highlight GitGutterChange guifg=#96E1EF
-
-" Initialize plugin system
-call plug#end()
-
-"""""""""""" End install extensions.
-
-"""""""""""" Other remaps
-
-" Remap Ctrl+w, <hjkl> to Ctrl+<hjkl>
-nnoremap <c-h> <c-w>h
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-l> <c-w>l
-
-" Map F5 to run last external command.
-nnoremap <F5> :!!<CR>
-
-" Map Esc to exit terminal insert mode.
-tnoremap <Esc> <C-\><C-n>
-
-" Map Ctrl+<hjkl> to exit insert mode and move window.
-tnoremap <c-h> <C-\><C-n><c-w>h
-tnoremap <c-j> <C-\><C-n><c-w>j
-tnoremap <c-k> <C-\><C-n><c-w>k
-tnoremap <c-l> <C-\><C-n><c-w>l
-
-" Add SplitTerminal to open a new split terminal.
-command! SplitTerminal 10split | :term
-autocmd BufEnter term://* startinsert

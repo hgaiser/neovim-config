@@ -71,7 +71,7 @@ hi ErrorMsg      gui=none guifg=#aaaaaa
 hi FoldColumn    gui=none guifg=#0066ff guibg=#aaaaaa
 hi Folded        gui=none guifg=#0066ff guibg=#aaaaaa
 hi IncSearch     gui=reverse
-hi LineNr        gui=none guifg=#585858 guibg=#262626
+hi LineNr        gui=none guifg=#585858 guibg=#000000
 hi MatchParen    gui=none guifg=#ffffff guibg=#000000
 hi ModeMsg       gui=bold
 hi MoreMsg       gui=none guifg=#009900

@@ -89,6 +89,19 @@ Plug 'tpope/vim-fugitive' " Git support inside vim.
 Plug 'cespare/vim-toml' " Formatting for (Cargo).toml files.
 Plug 'rust-lang/rust.vim' " Formatting for rust files.
 
+" Git gutter.
+Plug 'airblade/vim-gitgutter'
+let g:gitgutter_sign_added = '▌'
+let g:gitgutter_sign_modified = '▌'
+let g:gitgutter_sign_removed = '▁'
+let g:gitgutter_sign_removed_first_line = '▌'
+let g:gitgutter_sign_modified_removed = '▌'
+let g:gitgutter_map_keys = 0
+let g:gitgutter_realtime = 1
+highlight GitGutterDelete guifg=#F97CA9
+highlight GitGutterAdd    guifg=#BEE275
+highlight GitGutterChange guifg=#96E1EF
+
 " Initialize plugin system
 call plug#end()
 

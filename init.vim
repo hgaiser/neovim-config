@@ -40,6 +40,7 @@ Plug 'tpope/vim-fugitive'      " Git support inside vim.
 Plug 'cespare/vim-toml'        " Formatting for (Cargo).toml files.
 Plug 'rust-lang/rust.vim'      " Formatting for rust files.
 Plug 'airblade/vim-gitgutter'  " Git gutter.
+Plug 'Yggdroot/indentLine'     " Line for showing indentation level.
 
 " Initialize plugin system
 call plug#end()
@@ -136,8 +137,13 @@ endfunction
 nmap <leader>rn <Plug>(coc-rename)
 
 " NERDTree.
+" Disable the cursorline in NERDTree.
+let NERDTreeHighlightCursorline=0
 map <Leader>n :NERDTreeToggle<CR>
 map ` :NERDTreeToggle<CR>
 
 " Sudo write.
 cmap w!! w suda://%
+
+" Show indentation line.
+let g:indentLine_char = '⎸'

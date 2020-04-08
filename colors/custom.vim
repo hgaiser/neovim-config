@@ -77,8 +77,8 @@ hi ModeMsg       gui=bold
 hi MoreMsg       gui=none guifg=#009900
 hi NonText       gui=none guifg=#ffff33
 hi Normal        gui=none guifg=#aaaaaa guibg=#000000
-hi Pmenu         gui=none guifg=#aaaaaa guibg=#5f0000
-hi PmenuSel      gui=none guifg=#ffffff guibg=#870000
+hi Pmenu         gui=none guifg=#aaaaaa guibg=#3c454f
+hi PmenuSel      gui=none guifg=#ffffff guibg=#062f4a
 hi Question      gui=none guifg=#009900
 hi Search        gui=none guibg=#cc33ff guifg=#ffffff
 hi SpecialKey    gui=none guifg=#cc9900

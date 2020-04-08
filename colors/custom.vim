@@ -80,7 +80,7 @@ hi Normal        gui=none guifg=#aaaaaa guibg=#000000
 hi Pmenu         gui=none guifg=#aaaaaa guibg=#3c454f
 hi PmenuSel      gui=none guifg=#ffffff guibg=#062f4a
 hi Question      gui=none guifg=#009900
-hi Search        gui=none guibg=#cc33ff guifg=#ffffff
+hi Search        gui=none guibg=#8c471b guifg=#ffffff
 hi SpecialKey    gui=none guifg=#cc9900
 hi StatusLineNC  gui=none guifg=#585858 guibg=#1c1c1c
 hi StatusLine    gui=none guifg=#bcbcbc guibg=#1c1c1c

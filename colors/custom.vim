@@ -108,3 +108,4 @@ hi Type          gui=none guifg=#009900
 hi Whitespace    gui=none guifg=#755700
 hi TabLine       gui=underline guifg=White guibg=#6c6c6c
 hi TabLineSel    gui=bold
+hi CursorLine    gui=none guibg=#222222

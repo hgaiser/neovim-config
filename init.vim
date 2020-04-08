@@ -137,8 +137,6 @@ endfunction
 nmap <leader>rn <Plug>(coc-rename)
 
 " NERDTree.
-" Disable the cursorline in NERDTree.
-let NERDTreeHighlightCursorline=0
 map <Leader>n :NERDTreeToggle<CR>
 map ` :NERDTreeToggle<CR>
 

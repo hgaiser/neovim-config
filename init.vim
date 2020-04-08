@@ -3,6 +3,7 @@ set number                         " Set line numbers at the left.
 set noexpandtab                    " Use tabs for indentation.
 set tabstop=4                      " Tabs are 4 spaces.
 set shiftwidth=4                   " Number of spaces to insert when pressing TAB.
+set copyindent                     " Use the indentation from the previous line.
 let g:python_recommended_style = 0 " Don't use PEP8 (forces spaces).
 let g:rust_recommended_style = 0   " Don't use Rust style (forces spaces).
 set list                           " Show tab and trailing spaces.

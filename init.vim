@@ -28,6 +28,7 @@ Plug 'neoclide/coc-vimtex', {'do': 'yarn install --frozen-lockfile'}
 Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
+Plug 'clangd/coc-clangd', {'do': 'yarn install --frozen-lockfile'}
 
 Plug 'junegunn/fzf.vim'        " Fuzzy finding tools.
 Plug 'junegunn/vim-easy-align' " Alignment around operator

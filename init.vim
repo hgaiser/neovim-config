@@ -148,4 +148,4 @@ map ` :NERDTreeToggle<CR>
 cmap w!! w suda://%
 
 " Show indentation line.
-let g:indentLine_char = '⎸'
+let g:indentLine_char = '▏'

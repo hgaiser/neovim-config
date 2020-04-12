@@ -74,7 +74,7 @@ command! SplitTerminal 10split | :term
 autocmd BufEnter term://* startinsert
 
 " Color scheme.
-colorscheme custom " Colorscheme
+colorscheme gruvbox " Colorscheme
 set termguicolors
 
 " Git gutter colors
@@ -85,9 +85,9 @@ let g:gitgutter_sign_removed_first_line = '▌'
 let g:gitgutter_sign_modified_removed = '▌'
 let g:gitgutter_map_keys = 0
 let g:gitgutter_realtime = 1
-highlight GitGutterDelete guifg=#F97CA9
-highlight GitGutterAdd    guifg=#BEE275
-highlight GitGutterChange guifg=#96E1EF
+highlight GitGutterDelete guifg=#fb4934
+highlight GitGutterAdd    guifg=#b8bb26
+highlight GitGutterChange guifg=#83a598
 
 " Alignment extension.
 xmap ga <Plug>(EasyAlign)

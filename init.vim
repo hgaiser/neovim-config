@@ -32,8 +32,8 @@ Plug 'clangd/coc-clangd', {'do': 'yarn install --frozen-lockfile'}
 
 Plug 'junegunn/fzf.vim'        " Fuzzy finding tools.
 Plug 'junegunn/vim-easy-align' " Alignment around operator
-Plug 'preservim/nerdcommenter' " Comment code
 Plug 'preservim/nerdtree'      " File tree.
+Plug 'tpope/vim-commentary'    " Comment code.
 Plug 'tpope/vim-surround'      " Extension for changing surroundings.
 Plug 'tpope/vim-repeat'        " Allow repeating of commands like change surroundings.
 Plug 'lambdalisue/suda.vim'    " Write as sudo, workaround for https://github.com/neovim/neovim/issues/8527 .
@@ -92,18 +92,6 @@ highlight GitGutterChange guifg=#83a598
 " Alignment extension.
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
-
-" Comment code.
-" Add spaces after comment delimiters by default.
-let g:NERDSpaceDelims = 1
-" Align line-wise comment delimiters flush left instead of following code indentation.
-let g:NERDDefaultAlign = 'left'
-" Use compact syntax for prettified multi-line comments.
-let g:NERDCompactSexyComs = 1
-" Enable NERDCommenterToggle to check all selected lines is commented or not.
-let g:NERDToggleCheckAllLines = 1
-nmap <silent>// <leader>c<space>
-vmap <silent>// <leader>c<space>
 
 " Code completion
 

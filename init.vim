@@ -1,3 +1,5 @@
+" {{{ Change default vim settings.
+
 set mouse=a                        " Enable mouse mode.
 set number                         " Set line numbers at the left.
 set noexpandtab                    " Use tabs for indentation.
@@ -17,7 +19,9 @@ set splitbelow                     " Split files below current open file.
 set splitright                     " Split files right of current open file.
 set signcolumn=yes                 " Always show the sign column (GitGutter / Coc).
 
-"""""""""""" Install extensions.
+" }}}
+
+" {{{ Install extensions.
 
 " Specify a directory for plugins
 call plug#begin(stdpath('data') . '/plugged')
@@ -46,10 +50,9 @@ Plug 'Yggdroot/indentLine'     " Line for showing indentation level.
 " Initialize plugin system
 call plug#end()
 
-"""""""""""" End install extensions.
+" }}}
 
-" Map K to split line.
-nnoremap K i<Cr><Esc>
+" {{{ Navigational key mappings.
 
 " Remap Ctrl+w, <hjkl> to Ctrl+<hjkl>
 nnoremap <c-h> <c-w>h
@@ -57,28 +60,49 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
 
-" Map F5 to run last external command.
-nnoremap <F5> :!!<CR>
-
-" Map Esc to exit terminal insert mode.
-tnoremap <Esc> <C-\><C-n>
-
 " Map Ctrl+<hjkl> to exit insert mode and move window.
 tnoremap <c-h> <C-\><C-n><c-w>h
 tnoremap <c-j> <C-\><C-n><c-w>j
 tnoremap <c-k> <C-\><C-n><c-w>k
 tnoremap <c-l> <C-\><C-n><c-w>l
 
+" }}}
+
+" {{{ Edit related key mappings.
+
+" Map K to split line.
+nnoremap K i<Cr><Esc>
+
+" Alignment extension.
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
+" }}}
+
+" {{{ Execution related commands.
+
+" Map F5 to run last external command.
+nnoremap <F5> :!!<CR>
+
+" Map Esc to exit terminal insert mode.
+tnoremap <Esc> <C-\><C-n>
+
 " Add SplitTerminal to open a new split terminal.
 command! SplitTerminal 10split | :term
 autocmd BufEnter term://* startinsert
 
-" Color scheme.
+" }}}
+
+" {{{ Color scheme.
+
 let g:gruvbox_contrast_dark = 'hard'
 colorscheme gruvbox
 set termguicolors
 
-" Git gutter colors
+" }}}
+
+" {{{ Git gutter settings.
+
 let g:gitgutter_sign_added = '▌'
 let g:gitgutter_sign_modified = '▌'
 let g:gitgutter_sign_removed = '▁'
@@ -87,11 +111,9 @@ let g:gitgutter_sign_modified_removed = '▌'
 let g:gitgutter_map_keys = 0
 let g:gitgutter_realtime = 1
 
-" Alignment extension.
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
+" }}}
 
-" Code completion
+" {{{ Code completion (coc) settings.
 
 " Ctrl+Space to trigger Coc.
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -126,12 +148,27 @@ endfunction
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 
-" NERDTree.
+" }}}
+
+" {{{ NERDTree.
+
 map <Leader>n :NERDTreeToggle<CR>
 map ` :NERDTreeToggle<CR>
+
+" }}}
+
+" {{{ Sudo write to file.
 
 " Sudo write.
 cmap w!! w suda://%
 
+" }}}
+
+" {{{ Indentation line settings.
+
 " Show indentation line.
 let g:indentLine_char = '▏'
+
+" }}}
+
+" vim: foldmethod=marker

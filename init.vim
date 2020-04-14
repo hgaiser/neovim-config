@@ -40,6 +40,7 @@ Plug 'preservim/nerdtree'      " File tree.
 Plug 'tpope/vim-commentary'    " Comment code.
 Plug 'tpope/vim-surround'      " Extension for changing surroundings.
 Plug 'tpope/vim-repeat'        " Allow repeating of commands like change surroundings.
+Plug 'tpope/vim-sleuth'        " Automatically find the indentation given the file and neighbouring files.
 Plug 'lambdalisue/suda.vim'    " Write as sudo, workaround for https://github.com/neovim/neovim/issues/8527 .
 Plug 'tpope/vim-fugitive'      " Git support inside vim.
 Plug 'cespare/vim-toml'        " Formatting for (Cargo).toml files.

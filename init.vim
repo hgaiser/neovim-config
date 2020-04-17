@@ -169,6 +169,8 @@ cmap w!! w suda://%
 
 " Show indentation line.
 let g:indentLine_char = '▏'
+" Disable in terminal.
+let g:indentLine_bufNameExclude = ["term:.*"]
 
 " }}}
 

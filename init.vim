@@ -18,6 +18,7 @@ set undofile                       " Remain persistent undo file between vim ses
 set splitbelow                     " Split files below current open file.
 set splitright                     " Split files right of current open file.
 set signcolumn=yes                 " Always show the sign column (GitGutter / Coc).
+set noshowmode                     " Don't show the mode (like `-- INSERT --`), because this is shown in lightline.
 
 " }}}
 
@@ -152,8 +153,8 @@ nmap <leader>rn <Plug>(coc-rename)
 
 " {{{ NERDTree.
 
-map <Leader>n :NERDTreeToggle<CR>
-map ` :NERDTreeToggle<CR>
+map <silent> <Leader>n :NERDTreeToggle<CR>
+map <silent> ` :NERDTreeToggle<CR>
 
 " }}}
 

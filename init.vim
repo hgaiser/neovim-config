@@ -50,6 +50,7 @@ Plug 'airblade/vim-gitgutter'        " Git gutter.
 Plug 'Yggdroot/indentLine'           " Line for showing indentation level.
 Plug 'itchyny/lightline.vim'         " Fancy status bar.
 Plug 'shinchu/lightline-gruvbox.vim' " Gruvbox theme for lightline.
+Plug 'markstory/vim-zoomwin'         " Allow temporarily zooming in on a buffer.
 
 " Initialize plugin system
 call plug#end()

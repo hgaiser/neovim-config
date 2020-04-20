@@ -87,9 +87,6 @@ nmap ga <Plug>(EasyAlign)
 " Map F5 to run last external command.
 nnoremap <F5> :!!<CR>
 
-" Map Esc to exit terminal insert mode.
-tnoremap <Esc> <C-\><C-n>
-
 " Add SplitTerminal to open a new split terminal.
 command! SplitTerminal 10split | :term
 autocmd BufEnter term://* startinsert
@@ -180,6 +177,12 @@ let g:indentLine_bufNameExclude = ["term:.*"]
 
 let g:lightline = {}
 let g:lightline.colorscheme = 'gruvbox'
+
+" }}}
+
+" {{{ Buffer / file searching.
+
+nnoremap <silent> <Tab> :Buffers<CR>
 
 " }}}
 

@@ -172,6 +172,8 @@ cmap w!! w suda://%
 let g:indentLine_char = '▏'
 " Disable in terminal.
 let g:indentLine_bufNameExclude = ["term:.*"]
+" Disable indentLine for json files as it conceals quotation marks.
+autocmd Filetype json :IndentLinesDisable
 
 " }}}
 

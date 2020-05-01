@@ -82,6 +82,9 @@ nnoremap K i<Cr><Esc>
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
+" Allow pasting multiple times without yanking the replaced text.
+xnoremap p pgvy
+
 " }}}
 
 " {{{ Execution related commands.

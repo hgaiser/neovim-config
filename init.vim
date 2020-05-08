@@ -191,6 +191,7 @@ let g:lightline.colorscheme = 'gruvbox'
 " {{{ Buffer / file searching.
 
 nnoremap <silent> <Tab> :Buffers<CR>
+nnoremap <silent> <S-Tab> :Files<CR>
 
 " }}}
 

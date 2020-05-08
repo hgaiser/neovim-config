@@ -19,6 +19,7 @@ set splitbelow                     " Split files below current open file.
 set splitright                     " Split files right of current open file.
 set signcolumn=yes                 " Always show the sign column (GitGutter / Coc).
 set noshowmode                     " Don't show the mode (like `-- INSERT --`), because this is shown in lightline.
+set cursorline                     " Highlight the line the cursor is on.
 
 " }}}
 

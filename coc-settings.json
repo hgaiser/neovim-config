@@ -1,4 +1,6 @@
 {
+	// TODO: Use $XDG_CONFIG_HOME somehow?
+	"snippets.userSnippetsDirectory": "~/.config/nvim/ultisnips",
 	"languageserver": {
 		"ccls": {
 			"command": "ccls",

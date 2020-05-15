@@ -28,7 +28,7 @@ set cursorline                     " Highlight the line the cursor is on.
 " Specify a directory for plugins
 call plug#begin(stdpath('data') . '/plugged')
 
-""" Code completion.
+" Code completion.
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-vimtex', {'do': 'yarn install --frozen-lockfile'}
 Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile'}

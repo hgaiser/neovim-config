@@ -90,12 +90,12 @@ xnoremap p pgvy
 
 " {{{ Execution related commands.
 
-" Map F5 to run last external command.
-nnoremap <F5> :!!<CR>
-
 " Add SplitTerminal to open a new split terminal.
 command! SplitTerminal 10split | :term
 autocmd BufEnter term://* startinsert
+
+" Map Esc to exit terminal insert mode.
+tnoremap <leader><Esc> <C-\><C-n>
 
 " }}}
 

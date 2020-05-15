@@ -154,6 +154,9 @@ endfunction
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 
+" Highlight variable on cursor hold.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
 " }}}
 
 " {{{ NERDTree.

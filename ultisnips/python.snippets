@@ -25,17 +25,17 @@
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
 
 snippet parse_args "parse using argparse" b
-def parse_args():
+def parse_args() -> argparse.Namespace:
 	parser = argparse.ArgumentParser(description="$1")
 
-	parser.add_argument('$2', default=$3,${4: type=${5:int},} help="$6")
+	parser.add_argument('$2',${3: action=${4:'store_true'},}${5: default=${6:'default'},}${7: type=${8:int},} help="$9")
 
 	return parser.parse_args()
 endsnippet
 
 snippet main "simple main" b
-def main():
-	pass
+def main() -> None:
+	${1:pass}
 
 if __name__ == '__main__':
 	main()
@@ -51,4 +51,9 @@ endsnippet
 
 snippet from "import from a module" b
 from $1 import $2
+endsnippet
+
+snippet init "Initialize function for a class" b
+def __init__(self${1:, ${2: arg}}):
+	${3:pass}
 endsnippet

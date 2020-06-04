@@ -99,8 +99,9 @@ augroup END
 command! SplitTerminal 10split | :term
 autocmd BufEnter term://* startinsert
 
-" Map Esc to exit terminal insert mode.
+" Map Esc or Ctrl-d to exit terminal insert mode.
 tnoremap <leader><Esc> <C-\><C-n>
+tnoremap <C-d> <C-\><C-n>
 
 " }}}
 

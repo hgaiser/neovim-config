@@ -88,7 +88,12 @@ xnoremap p pgvy
 
 " }}}
 
-" {{{ Execution related commands.
+" {{{ Terminal related settings.
+
+augroup TerminalNoSignColumn
+   au!
+  autocmd TermOpen * setlocal signcolumn=no
+augroup END
 
 " Add SplitTerminal to open a new split terminal.
 command! SplitTerminal 10split | :term

@@ -92,7 +92,7 @@ xnoremap p pgvy
 
 augroup TerminalNoSignColumn
    au!
-  autocmd TermOpen * setlocal signcolumn=no
+  autocmd TermOpen * setlocal nonumber norelativenumber signcolumn=no
 augroup END
 
 " Add SplitTerminal to open a new split terminal.

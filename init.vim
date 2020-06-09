@@ -194,7 +194,7 @@ autocmd Filetype json :IndentLinesDisable
 
 let g:lightline = {}
 let g:lightline.colorscheme = 'gruvbox'
-let g:lightline = { 'inactive': { 'left': [['modified']] } } " Show modified marker (`+`) on inactive buffers.
+let g:lightline.inactive = {'left': [['modified']]} " Show modified marker (`+`) on inactive buffers.
 
 " }}}
 

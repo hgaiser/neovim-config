@@ -13,7 +13,6 @@ set listchars=tab:›─,trail:␣       " Show tabs and trailing whitespaces.
 set nowrap                         " Disable wrapping of lines.
 set nrformats=bin,hex,alpha        " Also consider the alphabet when incrementing/decrementing.
 set updatetime=500                 " Reduce the time before a backup is saved to disk.
-set relativenumber                 " Show relative line numbers.
 set undofile                       " Remain persistent undo file between vim sessions.
 set splitbelow                     " Split files below current open file.
 set splitright                     " Split files right of current open file.

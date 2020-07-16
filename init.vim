@@ -187,6 +187,7 @@ let g:indentLine_char = '▏'
 let g:indentLine_bufNameExclude = ["term:.*"]
 " Disable indentLine for json files as it conceals quotation marks.
 autocmd Filetype json :IndentLinesDisable
+autocmd Filetype markdown :IndentLinesDisable
 
 " }}}
 

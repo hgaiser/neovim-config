@@ -48,7 +48,6 @@ Plug 'tpope/vim-fugitive'             " Git support inside vim.
 Plug 'cespare/vim-toml'               " Formatting for (Cargo).toml files.
 Plug 'rust-lang/rust.vim'             " Formatting for rust files.
 Plug 'airblade/vim-gitgutter'         " Git gutter.
-Plug 'Yggdroot/indentLine'            " Line for showing indentation level.
 Plug 'itchyny/lightline.vim'          " Fancy status bar.
 Plug 'shinchu/lightline-gruvbox.vim'  " Gruvbox theme for lightline.
 Plug 'markstory/vim-zoomwin'          " Allow temporarily zooming in on a buffer.
@@ -177,18 +176,6 @@ map <silent> ` :NERDTreeToggle<CR>
 
 " Sudo write.
 cmap w!! w suda://%
-
-" }}}
-
-" {{{ Indentation line settings.
-
-" Show indentation line.
-let g:indentLine_char = '▏'
-" Disable in terminal.
-let g:indentLine_bufNameExclude = ["term:.*"]
-" Disable indentLine for json files as it conceals quotation marks.
-autocmd Filetype json :IndentLinesDisable
-autocmd Filetype markdown :IndentLinesDisable
 
 " }}}
 

@@ -35,6 +35,7 @@ Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
 Plug 'Maxattax97/coc-ccls', {'do': 'yarn install --frozen-lockfile'}
 
+Plug 'morhetz/gruvbox'                " Gruvbox color theme.
 Plug 'junegunn/fzf.vim'               " Fuzzy finding tools.
 Plug 'junegunn/vim-easy-align'        " Alignment around operator
 Plug 'preservim/nerdtree'             " File tree.
@@ -91,8 +92,8 @@ xnoremap p pgvy
 " {{{ Terminal related settings.
 
 augroup TerminalNoSignColumn
-   au!
-  autocmd TermOpen * setlocal nonumber norelativenumber signcolumn=no
+	au!
+	autocmd TermOpen * setlocal nonumber norelativenumber signcolumn=no
 augroup END
 
 " Add SplitTerminal to open a new split terminal.
@@ -108,7 +109,7 @@ tnoremap <C-d> <C-\><C-n>
 " {{{ Color scheme.
 
 let g:gruvbox_contrast_dark = 'hard'
-colorscheme gruvbox
+colorscheme gruvbox-custom
 set termguicolors
 
 " }}}

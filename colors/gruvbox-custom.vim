@@ -17,7 +17,7 @@ hi SpellRare  cterm=none ctermbg=88 gui=italic guibg=#883322
 hi Normal guifg=#ede7d8
 
 " Set sign column to the same color as the line numbers column.
-hi SignColumn guibg=GruvboxBg0
+hi SignColumn guibg=#1d2021
 
 " Show operators (+, -, =, etc.) in blue for easier reading.
 hi link Operator GruvboxBlue

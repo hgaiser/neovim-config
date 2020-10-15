@@ -1,4 +1,7 @@
 {
+	"diagnostic.errorSign": "●",
+	"diagnostic.warningSign": "●",
+	"diagnostic.infoSign": "●",
 	// TODO: Use $XDG_CONFIG_HOME somehow?
 	"snippets.userSnippetsDirectory": "~/.config/nvim/ultisnips",
 	"languageserver": {

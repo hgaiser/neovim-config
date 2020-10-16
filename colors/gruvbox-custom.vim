@@ -4,8 +4,8 @@ let g:colors_name = "gruvbox-custom"
 
 " Use highlighting to show errors, not underlining.
 hi CocErrorHighlight   cterm=none ctermbg=88 gui=none guibg=#883322
-hi CocWarningHighlight cterm=none ctermbg=94 gui=none guibg=#664422
-hi CocInfoHighlight    cterm=none ctermbg=58 gui=none guibg=#666622
+hi CocWarningHighlight cterm=none ctermbg=94 gui=none guibg=#9a4d00
+hi CocInfoHighlight    cterm=none ctermbg=58 gui=none guibg=#7b632f
 hi CocHintHighlight    cterm=none ctermbg=60 gui=none guibg=#4e6e62
 
 hi SpellCap   cterm=none ctermbg=88 gui=italic guibg=#883322

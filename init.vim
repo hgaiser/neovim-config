@@ -53,6 +53,7 @@ Plug 'itchyny/lightline.vim'                        " Fancy status bar.
 Plug 'shinchu/lightline-gruvbox.vim'                " Gruvbox theme for lightline.
 Plug 'markstory/vim-zoomwin'                        " Allow temporarily zooming in on a buffer.
 Plug 'PeterRincker/vim-argumentative'               " Adds functionality to work with arguments.
+Plug 'godlygeek/tabular'                            " Tabularizes blocks of texts according to a pattern.
 
 " Initialize plugin system
 call plug#end()

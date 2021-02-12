@@ -54,6 +54,7 @@ Plug 'shinchu/lightline-gruvbox.vim'                " Gruvbox theme for lightlin
 Plug 'markstory/vim-zoomwin'                        " Allow temporarily zooming in on a buffer.
 Plug 'PeterRincker/vim-argumentative'               " Adds functionality to work with arguments.
 Plug 'godlygeek/tabular'                            " Tabularizes blocks of texts according to a pattern.
+Plug 'mg979/vim-visual-multi'                       " Edit multiple locations simultaneously.
 
 " Initialize plugin system
 call plug#end()

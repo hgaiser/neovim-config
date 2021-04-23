@@ -20,5 +20,5 @@
 			}
 		}
 	},
-	"rust-analyzer.serverPath": "rust-analyzer"
+	"rust-analyzer.server.path": "rust-analyzer"
 }

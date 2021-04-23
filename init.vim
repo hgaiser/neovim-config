@@ -34,6 +34,7 @@ Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
 Plug 'Maxattax97/coc-ccls', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
 
 Plug 'morhetz/gruvbox'                              " Gruvbox color theme.
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " Fuzzy finding.

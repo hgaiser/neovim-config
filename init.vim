@@ -171,8 +171,9 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " {{{ NERDTree.
 
-map <silent> <Leader>n :NERDTreeToggle<CR>
-map <silent> ` :NERDTreeToggle<CR>
+nnoremap <silent> <Leader>n :NERDTreeToggle<CR>
+nnoremap <silent> ` :NERDTreeToggle<CR>
+nnoremap <silent> <Leader>f :NERDTreeFind<Cr>
 
 " }}}
 

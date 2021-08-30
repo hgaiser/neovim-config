@@ -167,6 +167,10 @@ nmap <leader>rn <Plug>(coc-rename)
 " Highlight variable on cursor hold.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
+" Use CTRL-S CTRL-S for codeAction
+nmap <silent> <C-s><C-s> <Plug>(coc-codeaction-cursor)
+xmap <silent> <C-s><C-s> <Plug>(coc-codeaction-selected)
+
 " }}}
 
 " {{{ NERDTree.

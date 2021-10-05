@@ -5,21 +5,6 @@
 	"diagnostic.hintSign": "●",
 	// TODO: Use $XDG_CONFIG_HOME somehow?
 	"snippets.userSnippetsDirectory": "~/.config/nvim/ultisnips",
-	"languageserver": {
-		"ccls": {
-			"command": "ccls",
-			"filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
-			"rootPatterns": [".ccls-root", "compile_commands.json"],
-			"initializationOptions": {
-				"cache": {
-					"directory": ".ccls-cache"
-				},
-				"client": {
-					"snippetSupport": true
-				}
-			}
-		}
-	},
 	"rust-analyzer.server.path": "rust-analyzer"
 	"rust-analyzer.checkOnSave.command": "clippy",
 	"coc.preferences.semanticTokensHighlights": false

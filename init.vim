@@ -1,65 +1,86 @@
 " {{{ Change default vim settings.
 
-set mouse=a                        " Enable mouse mode.
-set number                         " Set line numbers at the left.
-set noexpandtab                    " Use tabs for indentation.
-set tabstop=4                      " Tabs are 4 spaces.
-set shiftwidth=4                   " Number of spaces to insert when pressing TAB.
-set copyindent                     " Use the indentation from the previous line.
-let g:python_recommended_style = 0 " Don't use PEP8 (forces spaces).
-let g:rust_recommended_style = 0   " Don't use Rust style (forces spaces).
-set list                           " Show tab and trailing spaces.
-set listchars=tab:›─,trail:␣       " Show tabs and trailing whitespaces.
-set nowrap                         " Disable wrapping of lines.
-set nrformats=bin,hex,alpha        " Also consider the alphabet when incrementing/decrementing.
-set updatetime=500                 " Reduce the time before a backup is saved to disk.
-set undofile                       " Remain persistent undo file between vim sessions.
-set splitbelow                     " Split files below current open file.
-set splitright                     " Split files right of current open file.
-set signcolumn=yes                 " Always show the sign column (GitGutter / Coc).
-set noshowmode                     " Don't show the mode (like `-- INSERT --`), because this is shown in lightline.
-set cursorline                     " Highlight the line the cursor is on.
+lua <<EOF
+vim.opt.expandtab              = false            -- Use tabs for indentation.
+vim.opt.tabstop                = 4                -- Tabs are 4 spaces.
+vim.opt.shiftwidth             = 4                -- Number of spaces to insert when pressing TAB.
+vim.opt.copyindent             = true             -- Use the indentation from the previous line.
+vim.opt.mouse                  = 'a'              -- Enable mouse mode.
+vim.opt.number                 = true             -- Set line numbers at the left.
+vim.opt.list                   = true             -- Show tab and trailing spaces.
+vim.opt.listchars              = 'tab:›─,trail:␣' -- Show tabs and trailing whitespaces.
+vim.opt.wrap                   = false            -- Disable wrapping of lines.
+vim.opt.nrformats              = 'bin,hex,alpha'  -- Also consider the alphabet when incrementing/decrementing.
+vim.opt.updatetime             = 500              -- Reduce the time before a backup is saved to disk.
+vim.opt.undofile               = true             -- Remain persistent undo file between vim sessions.
+vim.opt.splitbelow             = true             -- Split files below current open file.
+vim.opt.splitright             = true             -- Split files right of current open file.
+vim.opt.signcolumn             = 'yes'            -- Always show the sign column (GitGutter / Coc).
+vim.opt.showmode               = false            -- Don't show the mode (like `-- INSERT --`), because this is shown in lightline.
+vim.opt.cursorline             = true             -- Highlight the line the cursor is on.
+vim.g.python_recommended_style = 0                -- Don't use PEP8 (forces spaces).
+vim.g.rust_recommended_style   = 0                -- Don't use Rust style (forces spaces).
+EOF
 
 " }}}
 
 " {{{ Install extensions.
 
-" Specify a directory for plugins
-call plug#begin(stdpath('data') . '/plugged')
+lua <<EOF
+-- Install Paq if it is not installed already.
+local install_path = vim.fn.stdpath('data') .. '/site/pack/paqs/start/paq-nvim'
 
-" Code completion.
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc-vimtex', {'do': 'yarn install --frozen-lockfile'}
-Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile'}
-Plug 'fannheyward/coc-pyright', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
-Plug 'clangd/coc-clangd', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+	vim.fn.system({'git', 'clone', '--depth=1', 'https://github.com/savq/paq-nvim.git', install_path})
+end
 
-Plug 'morhetz/gruvbox'                              " Gruvbox color theme.
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " Fuzzy finding.
-Plug 'junegunn/fzf.vim'                             " Fuzzy finding tools.
-Plug 'junegunn/vim-easy-align'                      " Alignment around operator
-Plug 'preservim/nerdtree'                           " File tree.
-Plug 'tpope/vim-commentary'                         " Comment code.
-Plug 'tpope/vim-surround'                           " Extension for changing surroundings.
-Plug 'tpope/vim-repeat'                             " Allow repeating of commands like change surroundings.
-Plug 'tpope/vim-sleuth'                             " Automatically find the indentation given the file and neighbouring files.
-Plug 'lambdalisue/suda.vim'                         " Write as sudo, workaround for https://github.com/neovim/neovim/issues/8527 .
-Plug 'tpope/vim-fugitive'                           " Git support inside vim.
-Plug 'cespare/vim-toml'                             " Formatting for (Cargo).toml files.
-Plug 'rust-lang/rust.vim'                           " Formatting for rust files.
-Plug 'airblade/vim-gitgutter'                       " Git gutter.
-Plug 'itchyny/lightline.vim'                        " Fancy status bar.
-Plug 'shinchu/lightline-gruvbox.vim'                " Gruvbox theme for lightline.
-Plug 'markstory/vim-zoomwin'                        " Allow temporarily zooming in on a buffer.
-Plug 'PeterRincker/vim-argumentative'               " Adds functionality to work with arguments.
-Plug 'godlygeek/tabular'                            " Tabularizes blocks of texts according to a pattern.
-Plug 'mg979/vim-visual-multi'                       " Edit multiple locations simultaneously.
-Plug 'editorconfig/editorconfig-vim'                " Read .editorconfig files to adjust formatting.
+require "paq" {
+	-- Let Paq manage itself.
+	"savq/paq-nvim";
 
-" Initialize plugin system
-call plug#end()
+	-- Common LUA plugin requirement.
+	'nvim-lua/plenary.nvim';
+
+	-- Code completion.
+	{'neoclide/coc.nvim', branch = 'release'};
+	{'neoclide/coc-vimtex', run = 'yarn install --frozen-lockfile'};
+	{'fannheyward/coc-rust-analyzer', run = 'yarn install --frozen-lockfile'};
+	{'fannheyward/coc-pyright', run = 'yarn install --frozen-lockfile'};
+	{'neoclide/coc-snippets', run = 'yarn install --frozen-lockfile'};
+	{'clangd/coc-clangd', run = 'yarn install --frozen-lockfile'};
+	{'neoclide/coc-json', run = 'yarn install --frozen-lockfile'};
+
+	-- Fuzzy finding.
+	'nvim-telescope/telescope.nvim';
+
+	-- Theme (gruvbox).
+	'rktjmp/lush.nvim';
+	'ellisonleao/gruvbox.nvim';
+
+	-- Git gutter.
+	'lewis6991/gitsigns.nvim';
+
+	-- File tree viewer.
+	'kyazdani42/nvim-web-devicons';
+	'kyazdani42/nvim-tree.lua';
+
+	-- Status line (lualine).
+	'nvim-lualine/lualine.nvim';
+
+	'junegunn/vim-easy-align';        -- Alignment around operator
+	'tpope/vim-commentary';           -- Comment code.
+	'tpope/vim-surround';             -- Extension for changing surroundings.
+	'tpope/vim-repeat';               -- Allow repeating of commands like change surroundings.
+	'tpope/vim-sleuth';               -- Automatically find the indentation given the file and neighbouring files.
+	'tpope/vim-fugitive';             -- Git support inside vim.
+	'cespare/vim-toml';               -- Formatting for (Cargo).toml files.
+	'rust-lang/rust.vim';             -- Formatting for rust files.
+	'PeterRincker/vim-argumentative'; -- Adds functionality to work with arguments.
+	'godlygeek/tabular';              -- Tabularizes blocks of texts according to a pattern.
+	'mg979/vim-visual-multi';         -- Edit multiple locations simultaneously.
+	'editorconfig/editorconfig-vim';  -- Read .editorconfig files to adjust formatting.
+}
+EOF
 
 " }}}
 
@@ -113,21 +134,27 @@ tnoremap <C-d> <C-\><C-n>
 
 " {{{ Color scheme.
 
-let g:gruvbox_contrast_dark = 'hard'
-colorscheme gruvbox-custom
-set termguicolors
+lua <<EOF
+vim.o.background = "dark"
+vim.cmd([[colorscheme gruvbox-custom]])
+vim.opt.termguicolors = true
+EOF
 
 " }}}
 
-" {{{ Git gutter settings.
+" {{{ Gitsigns settings.
 
-let g:gitgutter_sign_added = '▌'
-let g:gitgutter_sign_modified = '▌'
-let g:gitgutter_sign_removed = '▁'
-let g:gitgutter_sign_removed_first_line = '▌'
-let g:gitgutter_sign_modified_removed = '▌'
-let g:gitgutter_map_keys = 0
-let g:gitgutter_realtime = 1
+lua << EOF
+require('gitsigns').setup {
+	signs = {
+		add          = {hl = 'GitSignsAdd'   , text = '▌', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
+		change       = {hl = 'GitSignsChange', text = '▌', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+		delete       = {hl = 'GitSignsDelete', text = '▁', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+		topdelete    = {hl = 'GitSignsDelete', text = '▁', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+		changedelete = {hl = 'GitSignsChange', text = '▌', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+	},
+}
+EOF
 
 " }}}
 
@@ -175,33 +202,60 @@ xmap <silent> <C-s><C-s> <Plug>(coc-codeaction-selected)
 
 " }}}
 
-" {{{ NERDTree.
+" {{{ File tree viewer.
 
-nnoremap <silent> <Leader>n :NERDTreeToggle<CR>
-nnoremap <silent> ` :NERDTreeToggle<CR>
-nnoremap <silent> <Leader>f :NERDTreeFind<Cr>
+" Disable icons.
+let g:nvim_tree_show_icons = {
+	\ 'git': 1,
+	\ 'folders': 1,
+	\ 'files': 1,
+	\ 'folder_arrows': 0,
+	\ }
+let g:nvim_tree_icons = {
+	\ 'git': {
+	\   'unstaged': "",
+	\   'staged': "",
+	\   'unmerged': "",
+	\   'renamed': "➜",
+	\   'untracked': "",
+	\   'deleted': "",
+	\   'ignored': "◌"
+	\   }
+	\ }
+
+lua << EOF
+require('nvim-tree').setup {
+	filters = {
+		dotfiles = true,
+	},
+}
+EOF
+
+nnoremap <silent> <Leader>n :NvimTreeToggle<CR>
+nnoremap <silent> ` :NvimTreeToggle<CR>
+nnoremap <silent> <Leader>` :NvimTreeFindFile<Cr>
 
 " }}}
 
-" {{{ Sudo write to file.
+" {{{ Status line settings.
 
-" Sudo write.
-cmap w!! w suda://%
-
-" }}}
-
-" {{{ Lightline settings.
-
-let g:lightline = {}
-let g:lightline.colorscheme = 'gruvbox'
-let g:lightline.inactive = {'left': [['modified']]} " Show modified marker (`+`) on inactive buffers.
+lua << EOF
+require('lualine').setup {
+	options = {
+		theme = 'auto',
+		icons_enabled = false,
+	},
+}
+EOF
 
 " }}}
 
-" {{{ Buffer / file searching.
+" {{{ Telescope settings.
 
-nnoremap <silent> <Tab> :Buffers<CR>
-nnoremap <silent> <S-Tab> :Files<CR>
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 " }}}
 

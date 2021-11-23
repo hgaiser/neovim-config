@@ -7,7 +7,7 @@
 	"snippets.ultisnips.directories": [
 		"~/.config/nvim/ultisnips"
 	],
-	"rust-analyzer.server.path": "rust-analyzer"
+	"rust-analyzer.server.path": "rust-analyzer",
 	"rust-analyzer.checkOnSave.command": "clippy",
 	"coc.preferences.semanticTokensHighlights": false
 }

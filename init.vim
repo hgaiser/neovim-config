@@ -56,6 +56,7 @@ Plug 'markstory/vim-zoomwin'                        " Allow temporarily zooming 
 Plug 'PeterRincker/vim-argumentative'               " Adds functionality to work with arguments.
 Plug 'godlygeek/tabular'                            " Tabularizes blocks of texts according to a pattern.
 Plug 'mg979/vim-visual-multi'                       " Edit multiple locations simultaneously.
+Plug 'editorconfig/editorconfig-vim'                " Read .editorconfig files to adjust formatting.
 
 " Initialize plugin system
 call plug#end()

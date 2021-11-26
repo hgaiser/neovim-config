@@ -83,6 +83,7 @@ tnoremap <c-l> <C-\><C-n><c-w>l
 
 " Map K to split line.
 nnoremap K i<Cr><Esc>
+nnoremap <c-j> i<Cr><Esc>
 
 " Alignment extension.
 xmap ga <Plug>(EasyAlign)

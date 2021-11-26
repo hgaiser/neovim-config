@@ -42,13 +42,20 @@ require "paq" {
 	'nvim-lua/plenary.nvim';
 
 	-- Code completion.
-	{'neoclide/coc.nvim', branch = 'release'};
-	{'neoclide/coc-vimtex', run = 'yarn install --frozen-lockfile'};
-	{'fannheyward/coc-rust-analyzer', run = 'yarn install --frozen-lockfile'};
-	{'fannheyward/coc-pyright', run = 'yarn install --frozen-lockfile'};
-	{'neoclide/coc-snippets', run = 'yarn install --frozen-lockfile'};
-	{'clangd/coc-clangd', run = 'yarn install --frozen-lockfile'};
-	{'neoclide/coc-json', run = 'yarn install --frozen-lockfile'};
+	-- Collection of common configurations for the Nvim LSP client.
+	'neovim/nvim-lspconfig';
+	{ 'tami5/lspsaga.nvim', branch = 'nvim51' };
+	-- Completion framework.
+	'hrsh7th/nvim-cmp';
+	-- LSP completion source for nvim-cmp.
+	'hrsh7th/cmp-nvim-lsp';
+	-- Snippet completion source for nvim-cmp.
+	'hrsh7th/cmp-vsnip';
+	-- Other useful completion sources (filesystem and buffered words).
+	'hrsh7th/cmp-path';
+	'hrsh7th/cmp-buffer';
+	-- To enable more of the features of rust-analyzer, such as inlay hints and more!
+	'simrat39/rust-tools.nvim';
 
 	-- Fuzzy finding.
 	'nvim-telescope/telescope.nvim';
@@ -157,47 +164,113 @@ EOF
 
 " }}}
 
-" {{{ Code completion (coc) settings.
+" {{{ Code completion (nvim-lsp) settings.
 
-" Ctrl+Space to trigger Coc.
-inoremap <silent><expr> <c-space> coc#refresh()
+" lspsage for some LSP utilities.
+lua <<EOF
+require('lspsaga').init_lsp_saga {
+	error_sign = '●',
+	warn_sign = '●',
+	hint_sign = '●',
+	infor_sign = '●',
+	code_action_icon = '●',
+	code_action_prompt = {
+		enable = true,
+		sign = false,
+		virtual_text = true,
+	},
+	rename_prompt_prefix = '>',
+	rename_action_keys = {
+		quit = '<Esc>', exec = '<CR>'
+	},
+	code_action_keys = {
+		quit = '<Esc>', exec = '<CR>'
+	},
+}
+EOF
 
-" Tab to cycle through options, enter to select.
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+" Apply code actions.
+nnoremap <silent> <C-s><C-s> :Lspsaga code_action<CR>
+vnoremap <silent> <C-s><C-s> :<C-U>Lspsaga range_code_action<CR>
 
-" Use `[g` and `]g` to navigate diagnostics.
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+" Show documentation.
+nnoremap <silent> ? :Lspsaga hover_doc<CR>
 
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+" Rename.
+nnoremap <silent> gr :Lspsaga rename<CR>
 
-" Use ? to show documentation in preview window.
-nnoremap <silent> ? :call <SID>show_documentation()<CR>
+" rust-analyzer LSP configuration.
+lua <<EOF
+require('rust-tools').setup({
+	tools = { -- rust-tools options
+		autoSetHints = true,
+		hover_with_actions = true,
+		inlay_hints = {
+			show_parameter_hints = true,
+			parameter_hints_prefix = "",
+			other_hints_prefix = "",
+		},
+	},
 
-function! s:show_documentation()
-	if (index(['vim','help'], &filetype) >= 0)
-		execute 'h '.expand('<cword>')
-	else
-		call CocAction('doHover')
-	endif
-endfunction
+	-- all the opts to send to nvim-lspconfig
+	-- these override the defaults set by rust-tools.nvim
+	-- see https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#rust_analyzer
+	server = {
+		-- on_attach is a callback called when the language server attachs to the buffer
+		-- on_attach = on_attach,
+		settings = {
+			-- to enable rust-analyzer settings visit:
+			-- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
+			["rust-analyzer"] = {
+				-- enable clippy on save
+				checkOnSave = {
+					command = "clippy"
+				},
+			}
+		}
+	},
+})
+EOF
 
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
+" Pyright LSP.
+lua <<EOF
+require('lspconfig').pyright.setup{}
+EOF
 
-" Highlight variable on cursor hold.
-autocmd CursorHold * silent call CocActionAsync('highlight')
+" clangd LSP.
+lua <<EOF
+require('lspconfig').clangd.setup{}
+EOF
 
-" Use CTRL-S CTRL-S for codeAction
-nmap <silent> <C-s><C-s> <Plug>(coc-codeaction-cursor)
-xmap <silent> <C-s><C-s> <Plug>(coc-codeaction-selected)
+" nvim-lsp configuration.
+lua <<EOF
+local cmp = require('cmp')
+cmp.setup({
+	-- Enable LSP snippets
+	snippet = {
+		expand = function(args)
+			vim.fn["vsnip#anonymous"](args.body)
+		end,
+	},
+	mapping = {
+		['<S-Tab>'] = cmp.mapping.select_prev_item(),
+		['<Tab>'] = cmp.mapping.select_next_item(),
+		['<C-Space>'] = cmp.mapping.complete(),
+		['<CR>'] = cmp.mapping.confirm({
+			behavior = cmp.ConfirmBehavior.Insert,
+			select = true,
+		})
+	},
+
+	-- Installed sources
+	sources = {
+		{ name = 'nvim_lsp' },
+		{ name = 'vsnip' },
+		{ name = 'path' },
+		{ name = 'buffer' },
+	},
+})
+EOF
 
 " }}}
 
@@ -212,12 +285,12 @@ let g:nvim_tree_show_icons = {
 	\ }
 let g:nvim_tree_icons = {
 	\ 'git': {
-	\   'unstaged': "*",
-	\   'staged': "+",
-	\   'unmerged': "x",
+	\   'unstaged': "●",
+	\   'staged': "●",
+	\   'unmerged': "●",
 	\   'renamed': "➜",
 	\   'untracked': "",
-	\   'deleted': "+",
+	\   'deleted': "●",
 	\   'ignored': "◌"
 	\   },
 	\ 'folder': {
@@ -253,7 +326,7 @@ require('lualine').setup {
 	options = {
 		theme = 'auto',
 		icons_enabled = false,
-		component_separators = { left = '', right = ''},
+		component_separators = { left = '|', right = '|'},
 		section_separators = { left = '', right = ''},
 	},
 }

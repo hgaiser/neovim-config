@@ -20,5 +20,11 @@ fi
 if ! command -v "clangd" > /dev/null; then
 	echo "Consider installing clang for C++ code completion."
 fi
+if ! command -v "pyright" > /dev/null; then
+	echo "Consider installing pyright for Python code completion."
+fi
+if ! command -v "rust-analyzer" > /dev/null; then
+	echo "Consider installing rust-analyzer for Rust code completion."
+fi
 
 nvim +PaqSync

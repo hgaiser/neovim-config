@@ -21,4 +21,4 @@ if ! command -v "clangd" > /dev/null; then
 	echo "Consider installing clang for C++ code completion."
 fi
 
-nvim +PaqSync +qall
+nvim +PaqSync

@@ -61,7 +61,6 @@ require "paq" {
 	'lewis6991/gitsigns.nvim';
 
 	-- File tree viewer.
-	'kyazdani42/nvim-web-devicons';
 	'kyazdani42/nvim-tree.lua';
 
 	-- Status line (lualine).
@@ -202,24 +201,34 @@ xmap <silent> <C-s><C-s> <Plug>(coc-codeaction-selected)
 
 " }}}
 
-" {{{ File tree viewer.
+" {{{ File tree viewer
 
 " Disable icons.
 let g:nvim_tree_show_icons = {
 	\ 'git': 1,
 	\ 'folders': 1,
-	\ 'files': 1,
+	\ 'files': 0,
 	\ 'folder_arrows': 0,
 	\ }
 let g:nvim_tree_icons = {
 	\ 'git': {
-	\   'unstaged': "",
-	\   'staged': "",
-	\   'unmerged': "",
+	\   'unstaged': "*",
+	\   'staged': "+",
+	\   'unmerged': "x",
 	\   'renamed': "➜",
-	\   'untracked': "",
-	\   'deleted': "",
+	\   'untracked': "",
+	\   'deleted': "+",
 	\   'ignored': "◌"
+	\   },
+	\ 'folder': {
+	\   'arrow_open': "▾",
+	\   'arrow_closed': "▸",
+	\   'default': "▸",
+	\   'open': "▾",
+	\   'empty': "▸",
+	\   'empty_open': "▾",
+	\   'symlink': "▸",
+	\   'symlink_open': "▾",
 	\   }
 	\ }
 

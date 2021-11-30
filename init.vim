@@ -51,6 +51,7 @@ require "paq" {
 	'hrsh7th/cmp-nvim-lsp';
 	-- Snippet completion source for nvim-cmp.
 	'hrsh7th/cmp-vsnip';
+	'hrsh7th/vim-vsnip';
 	-- Other useful completion sources (filesystem and buffered words).
 	'hrsh7th/cmp-path';
 	'hrsh7th/cmp-buffer';

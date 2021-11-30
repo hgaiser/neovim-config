@@ -12,7 +12,7 @@ check_commands() {
 }
 
 # Check for required tools.
-required_commands="git nvim yarn"
+required_commands="git nvim"
 if ! check_commands $required_commands; then
 	exit 1
 fi
@@ -27,4 +27,4 @@ if ! command -v "rust-analyzer" > /dev/null; then
 	echo "Consider installing rust-analyzer for Rust code completion."
 fi
 
-nvim +PaqSync
+nvim --headless -c +PaqSync

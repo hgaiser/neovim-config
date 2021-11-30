@@ -196,8 +196,15 @@ vnoremap <silent> <C-s><C-s> :<C-U>Lspsaga range_code_action<CR>
 " Show documentation.
 nnoremap <silent> ? :Lspsaga hover_doc<CR>
 
+" Show line diagnostics.
+autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
+
+" Use `[g` and `]g` to navigate diagnostics.
+nmap <silent> [g :Lspsaga diagnostic_jump_prev<CR>
+nmap <silent> ]g :Lspsaga diagnostic_jump_prev<CR>
+
 " Rename.
-nnoremap <silent> gr :Lspsaga rename<CR>
+nnoremap <silent> <Leader>rn :Lspsaga rename<CR>
 
 " rust-analyzer LSP configuration.
 lua <<EOF
@@ -232,16 +239,6 @@ require('rust-tools').setup({
 })
 EOF
 
-" Pyright LSP.
-lua <<EOF
-require('lspconfig').pyright.setup{}
-EOF
-
-" clangd LSP.
-lua <<EOF
-require('lspconfig').clangd.setup{}
-EOF
-
 " nvim-lsp configuration.
 lua <<EOF
 local cmp = require('cmp')
@@ -270,6 +267,39 @@ cmp.setup({
 		{ name = 'buffer' },
 	},
 })
+EOF
+
+lua << EOF
+local nvim_lsp = require('lspconfig')
+
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
+local on_attach = function(client, bufnr)
+	local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+	local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+	-- Enable completion triggered by <c-x><c-o>
+	buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+	-- Mappings.
+	local opts = { noremap=true, silent=true }
+
+	-- See `:help vim.lsp.*` for documentation on any of the below functions
+	buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+	buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+end
+
+-- Use a loop to conveniently call 'setup' on multiple servers and
+-- map buffer local keybindings when the language server attaches
+local servers = { 'pyright', 'rust_analyzer', 'clangd' }
+for _, lsp in ipairs(servers) do
+	nvim_lsp[lsp].setup {
+		on_attach = on_attach,
+		flags = {
+			debounce_text_changes = 150,
+		}
+	}
+end
 EOF
 
 " }}}

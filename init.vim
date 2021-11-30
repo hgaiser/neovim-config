@@ -110,8 +110,7 @@ tnoremap <c-l> <C-\><C-n><c-w>l
 " {{{ Edit related key mappings.
 
 " Map K to split line.
-nnoremap K i<Cr><Esc>
-nnoremap <c-j> i<Cr><Esc>
+nnoremap K i<Cr><Esc>==
 
 " Alignment extension.
 xmap ga <Plug>(EasyAlign)

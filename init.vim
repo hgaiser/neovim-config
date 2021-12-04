@@ -58,6 +58,10 @@ require "paq" {
 	-- To enable more of the features of rust-analyzer, such as inlay hints and more!
 	'simrat39/rust-tools.nvim';
 
+	-- TreeSitter
+	{'nvim-treesitter/nvim-treesitter', run=vim.fn["TSUpdate"]};
+	'nvim-treesitter/nvim-treesitter-textobjects';
+
 	-- Fuzzy finding.
 	'nvim-telescope/telescope.nvim';
 
@@ -82,7 +86,6 @@ require "paq" {
 	'tpope/vim-fugitive';             -- Git support inside vim.
 	'cespare/vim-toml';               -- Formatting for (Cargo).toml files.
 	'rust-lang/rust.vim';             -- Formatting for rust files.
-	'PeterRincker/vim-argumentative'; -- Adds functionality to work with arguments.
 	'godlygeek/tabular';              -- Tabularizes blocks of texts according to a pattern.
 	'mg979/vim-visual-multi';         -- Edit multiple locations simultaneously.
 	'editorconfig/editorconfig-vim';  -- Read .editorconfig files to adjust formatting.
@@ -373,6 +376,41 @@ nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 nnoremap <S-Tab> <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap <Tab> <cmd>lua require('telescope.builtin').buffers()<cr>
+
+" }}}
+
+" {{{ TreeSitter settings
+
+lua <<EOF
+require('nvim-treesitter.configs').setup {
+	ensure_installed = { "rust", "cpp", "c", "python" },
+	highlight = { enable = true, },
+	incremental_selection = { enable = true, },
+}
+EOF
+
+lua <<EOF
+require('nvim-treesitter.configs').setup {
+	textobjects = {
+		select = {
+			enable = true,
+
+			-- Automatically jump forward to textobj, similar to targets.vim
+			lookahead = true,
+
+			keymaps = {
+				-- You can use the capture groups defined in textobjects.scm
+				["af"] = "@function.outer",
+				["if"] = "@function.inner",
+				["ac"] = "@class.outer",
+				["ic"] = "@class.inner",
+				["i,"] = "@parameter.inner",
+				["a,"] = "@parameter.outer",
+			},
+		},
+	},
+}
+EOF
 
 " }}}
 

@@ -17,3 +17,11 @@ vim.opt.showmode               = false            -- Don't show the mode (like `
 vim.opt.cursorline             = true             -- Highlight the line the cursor is on.
 vim.g.python_recommended_style = 0                -- Don't use PEP8 (forces spaces).
 vim.g.rust_recommended_style   = 0                -- Don't use Rust style (forces spaces).
+
+-- Highlight yanked text.
+vim.cmd([[
+augroup highlight_yank
+	autocmd!
+	au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
+augroup END
+]])

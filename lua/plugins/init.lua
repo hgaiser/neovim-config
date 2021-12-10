@@ -60,9 +60,11 @@ require('paq') {
 	'godlygeek/tabular';              -- Tabularizes blocks of texts according to a pattern.
 	'mg979/vim-visual-multi';         -- Edit multiple locations simultaneously.
 	'editorconfig/editorconfig-vim';  -- Read .editorconfig files to adjust formatting.
+	'lewis6991/impatient.nvim';       -- Cache lua plugins to spead up load times.
 }
 
 -- Load plugin configuration.
+require('plugins.impatient')
 require('plugins.lualine')
 require('plugins.gitsigns')
 require('plugins.nvim_tree')

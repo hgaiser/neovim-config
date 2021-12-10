@@ -8,3 +8,6 @@ hi GruvboxFg1 guifg=#ede7d8
 
 " Show operators (+, -, =, etc.) in blue for easier reading.
 hi link Operator GruvboxBlue
+
+" Show selected tab in darker color.
+hi TabLineSel guibg=GruvboxBg0

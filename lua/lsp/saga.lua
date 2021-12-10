@@ -36,3 +36,10 @@ utils.map { 'n', ']g', ':Lspsaga diagnostic_jump_prev<CR>' }
 
 -- Rename.
 utils.map { 'n', '<Leader>rn', ':Lspsaga rename<CR>' }
+
+-- Remove retarded purple color on diagnostic floating windows.
+vim.cmd([[
+hi link LspSagaDiagnosticBorder GruvboxFg0
+hi link LspSagaDiagnosticHeader GruvboxFg0
+hi link LspSagaDiagnosticTruncateLine GruvboxFg0
+]])

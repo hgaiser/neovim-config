@@ -67,6 +67,6 @@ require('paq') {
 require('plugins.impatient')
 require('plugins.lualine')
 require('plugins.gitsigns')
-require('plugins.nvim_tree')
+require('plugins.nvim-tree')
 require('plugins.telescope')
 require('plugins.treesitter')

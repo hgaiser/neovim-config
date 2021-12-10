@@ -5,6 +5,7 @@ require('lspsaga').init_lsp_saga {
 	hint_sign = '●',
 	infor_sign = '●',
 	code_action_icon = '●',
+	diagnostic_header_icon = '',
 	code_action_prompt = {
 		enable = true,
 		sign = false,

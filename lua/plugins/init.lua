@@ -15,7 +15,7 @@ require('paq') {
 	-- Code completion.
 	-- Collection of common configurations for the Nvim LSP client.
 	'neovim/nvim-lspconfig';
-	'tami5/lspsaga.nvim';
+	{'hgaiser/lspsaga.nvim', branch='fix-diagnostic-icon'};
 	-- Completion framework.
 	'hrsh7th/nvim-cmp';
 	-- LSP completion source for nvim-cmp.

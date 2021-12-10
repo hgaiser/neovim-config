@@ -25,6 +25,10 @@ vim.g.nvim_tree_icons = {
 		symlink_open = '▾',
 	}
 }
+vim.g.nvim_tree_indent_markers = 1
+vim.cmd "highlight def link NvimTreeFolderName GruvboxAqua"
+vim.cmd "highlight def link NvimTreeOpenedFolderName GruvboxAqua"
+vim.cmd "highlight def link NvimTreeRootFolder GruvboxGreen"
 
 require('nvim-tree').setup {
 	filters = {

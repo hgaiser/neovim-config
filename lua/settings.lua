@@ -15,6 +15,7 @@ vim.opt.splitright             = true             -- Split files right of curren
 vim.opt.signcolumn             = 'yes'            -- Always show the sign column (GitGutter / Coc).
 vim.opt.showmode               = false            -- Don't show the mode (like `-- INSERT --`), because this is shown in lightline.
 vim.opt.cursorline             = true             -- Highlight the line the cursor is on.
+vim.opt.fcs                    = 'eob: '
 vim.g.python_recommended_style = 0                -- Don't use PEP8 (forces spaces).
 vim.g.rust_recommended_style   = 0                -- Don't use Rust style (forces spaces).
 

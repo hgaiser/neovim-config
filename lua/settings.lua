@@ -13,9 +13,9 @@ vim.opt.undofile               = true             -- Remain persistent undo file
 vim.opt.splitbelow             = true             -- Split files below current open file.
 vim.opt.splitright             = true             -- Split files right of current open file.
 vim.opt.signcolumn             = 'yes'            -- Always show the sign column (GitGutter / Coc).
-vim.opt.showmode               = false            -- Don't show the mode (like `-- INSERT --`), because this is shown in lightline.
+vim.opt.showmode               = false            -- Don't show the mode (like `-- INSERT --`), because this is shown in lualine.
 vim.opt.cursorline             = true             -- Highlight the line the cursor is on.
-vim.opt.fcs                    = 'eob: '
+vim.opt.fillchars:append { eob = " " }            -- Hide the '~' on empty lines.
 vim.g.python_recommended_style = 0                -- Don't use PEP8 (forces spaces).
 vim.g.rust_recommended_style   = 0                -- Don't use Rust style (forces spaces).
 

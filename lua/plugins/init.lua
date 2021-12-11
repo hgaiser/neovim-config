@@ -23,6 +23,7 @@ require('paq') {
 	-- Snippet completion source for nvim-cmp.
 	'hrsh7th/cmp-vsnip';
 	'hrsh7th/vim-vsnip';
+	'rafamadriz/friendly-snippets'; -- Set of commonly used snippets.
 	-- Other useful completion sources (filesystem and buffered words).
 	'hrsh7th/cmp-path';
 	'hrsh7th/cmp-buffer';

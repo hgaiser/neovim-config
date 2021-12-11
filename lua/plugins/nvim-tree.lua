@@ -31,6 +31,7 @@ vim.cmd "highlight def link NvimTreeOpenedFolderName GruvboxAqua"
 vim.cmd "highlight def link NvimTreeRootFolder GruvboxGreen"
 
 require('nvim-tree').setup {
+	auto_close = true,
 	filters = {
 		dotfiles = true,
 	},

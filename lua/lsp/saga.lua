@@ -6,6 +6,10 @@ require('lspsaga').init_lsp_saga {
 	infor_sign = '●',
 	code_action_icon = '●',
 	diagnostic_header_icon = '',
+	code_action_icon = '',
+	finder_definition_icon = '',
+	finder_reference_icon = '',
+	definition_preview_icon = '',
 	code_action_prompt = {
 		enable = true,
 		sign = false,
@@ -26,13 +30,6 @@ utils.map { 'v', '<C-s><C-s>', ':<C-U>Lspsaga range_code_action<CR>' }
 
 -- Show documentation.
 utils.map { 'n', '?', ':Lspsaga hover_doc<CR>' }
-
--- Show line diagnostics.
--- autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
-
--- Use `[g` and `]g` to navigate diagnostics.
-utils.map { 'n', '[g', ':Lspsaga diagnostic_jump_prev<CR>' }
-utils.map { 'n', ']g', ':Lspsaga diagnostic_jump_prev<CR>' }
 
 -- Rename.
 utils.map { 'n', '<Leader>rn', ':Lspsaga rename<CR>' }

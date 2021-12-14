@@ -1,73 +1,71 @@
--- Install Paq if it is not installed already.
-local install_path = vim.fn.stdpath('data') .. '/site/pack/paqs/start/paq-nvim'
-
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-	vim.fn.system({'git', 'clone', '--depth=1', 'https://github.com/savq/paq-nvim.git', install_path})
+-- Install Packer if it is not installed already.
+local fn = vim.fn
+local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+if fn.empty(fn.glob(install_path)) > 0 then
+	packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
-require('paq') {
-	-- Let Paq manage itself.
-	'savq/paq-nvim';
+return require('packer').startup(function(use)
+	-- Packer can manage itself
+	use 'wbthomason/packer.nvim'
 
 	-- Common LUA plugin requirement.
-	'nvim-lua/plenary.nvim';
+	use 'nvim-lua/plenary.nvim'
 
 	-- Code completion.
 	-- Collection of common configurations for the Nvim LSP client.
-	'neovim/nvim-lspconfig';
-	'tami5/lspsaga.nvim';
+	use 'neovim/nvim-lspconfig'
+	use 'tami5/lspsaga.nvim'
 	-- Completion framework.
-	'hrsh7th/nvim-cmp';
+	use 'hrsh7th/nvim-cmp'
 	-- LSP completion source for nvim-cmp.
-	'hrsh7th/cmp-nvim-lsp';
+	use 'hrsh7th/cmp-nvim-lsp'
 	-- Snippet completion source for nvim-cmp.
-	'hrsh7th/cmp-vsnip';
-	'hrsh7th/vim-vsnip';
-	'rafamadriz/friendly-snippets'; -- Set of commonly used snippets.
+	use 'hrsh7th/cmp-vsnip'
+	use 'hrsh7th/vim-vsnip'
+	use 'rafamadriz/friendly-snippets' -- Set of commonly used snippets.
 	-- Other useful completion sources (filesystem and buffered words).
-	'hrsh7th/cmp-path';
-	'hrsh7th/cmp-buffer';
+	use 'hrsh7th/cmp-path'
+	use 'hrsh7th/cmp-buffer'
 	-- To enable more of the features of rust-analyzer, such as inlay hints and more!
-	'simrat39/rust-tools.nvim';
+	use 'simrat39/rust-tools.nvim'
 
 	-- TreeSitter
-	{'nvim-treesitter/nvim-treesitter', run=vim.fn['TSUpdate']};
-	'nvim-treesitter/nvim-treesitter-textobjects';
+	use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+	use 'nvim-treesitter/nvim-treesitter-textobjects'
 
 	-- Fuzzy finding.
-	'nvim-telescope/telescope.nvim';
+	use 'nvim-telescope/telescope.nvim'
 
 	-- Theme (gruvbox).
-	'rktjmp/lush.nvim';
-	'ellisonleao/gruvbox.nvim';
+	use 'rktjmp/lush.nvim'
+	use 'ellisonleao/gruvbox.nvim'
 
 	-- Git gutter.
-	'lewis6991/gitsigns.nvim';
+	use 'lewis6991/gitsigns.nvim'
 
 	-- File tree viewer.
-	'kyazdani42/nvim-tree.lua';
+	use 'kyazdani42/nvim-tree.lua'
 
 	-- Status line (lualine).
-	'nvim-lualine/lualine.nvim';
+	use 'nvim-lualine/lualine.nvim'
 
-	'junegunn/vim-easy-align';        -- Alignment around operator
-	'tpope/vim-commentary';           -- Comment code.
-	'tpope/vim-surround';             -- Extension for changing surroundings.
-	'tpope/vim-repeat';               -- Allow repeating of commands like change surroundings.
-	'tpope/vim-sleuth';               -- Automatically find the indentation given the file and neighbouring files.
-	'tpope/vim-fugitive';             -- Git support inside vim.
-	'cespare/vim-toml';               -- Formatting for (Cargo).toml files.
-	'rust-lang/rust.vim';             -- Formatting for rust files.
-	'godlygeek/tabular';              -- Tabularizes blocks of texts according to a pattern.
-	'mg979/vim-visual-multi';         -- Edit multiple locations simultaneously.
-	'editorconfig/editorconfig-vim';  -- Read .editorconfig files to adjust formatting.
-	'lewis6991/impatient.nvim';       -- Cache lua plugins to spead up load times.
-}
+	use 'junegunn/vim-easy-align'        -- Alignment around operator
+	use 'tpope/vim-commentary'           -- Comment code.
+	use 'tpope/vim-surround'             -- Extension for changing surroundings.
+	use 'tpope/vim-repeat'               -- Allow repeating of commands like change surroundings.
+	use 'tpope/vim-sleuth'               -- Automatically find the indentation given the file and neighbouring files.
+	use 'tpope/vim-fugitive'             -- Git support inside vim.
+	use 'cespare/vim-toml'               -- Formatting for (Cargo).toml files.
+	use 'rust-lang/rust.vim'             -- Formatting for rust files.
+	use 'godlygeek/tabular'              -- Tabularizes blocks of texts according to a pattern.
+	use 'mg979/vim-visual-multi'         -- Edit multiple locations simultaneously.
+	use 'editorconfig/editorconfig-vim'  -- Read .editorconfig files to adjust formatting.
+	use 'lewis6991/impatient.nvim'       -- Cache lua plugins to spead up load times.
 
--- Load plugin configuration.
-require('plugins.impatient')
-require('plugins.lualine')
-require('plugins.gitsigns')
-require('plugins.nvim-tree')
-require('plugins.telescope')
-require('plugins.treesitter')
+	-- Automatically set up your configuration after cloning packer.nvim
+	-- Put this at the end after all plugins
+	if packer_bootstrap then
+		require('packer').sync()
+	end
+end)

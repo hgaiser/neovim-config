@@ -86,7 +86,16 @@ return require('packer').startup(function(use)
 
 	-- Theme (gruvbox).
 	use 'rktjmp/lush.nvim'
-	use 'ellisonleao/gruvbox.nvim'
+	use {
+		'ellisonleao/gruvbox.nvim',
+		config = function()
+			vim.o.background = 'dark'
+			vim.g.gruvbox_sign_column = 'bg0'
+			vim.g.gruvbox_contrast_dark = 'hard'
+			vim.cmd([[colorscheme gruvbox-custom]])
+			vim.opt.termguicolors = true
+		end,
+	}
 
 	-- Git signs and text objects.
 	use {

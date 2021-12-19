@@ -1,7 +1,6 @@
 -- Common settings.
 require('utils')
 require('settings')
-require('theme')
 require('maps')
 
 -- Load plugins and their settings.

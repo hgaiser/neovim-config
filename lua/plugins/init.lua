@@ -64,11 +64,11 @@ return require('packer').startup(function(use)
 	-- Other useful completion sources (filesystem and buffered words).
 	use 'hrsh7th/cmp-path'
 	use 'hrsh7th/cmp-buffer'
-	-- To enable more of the features of rust-analyzer, such as inlay hints and more!
-	use {
-		'simrat39/rust-tools.nvim',
-		config = [[require('plugins.lsp.languages.rust')]],
-	}
+	-- -- To enable more of the features of rust-analyzer, such as inlay hints and more!
+	-- use {
+	-- 	'simrat39/rust-tools.nvim',
+	-- 	config = [[require('plugins.lsp.languages.rust')]],
+	-- }
 
 	-- TreeSitter
 	use {

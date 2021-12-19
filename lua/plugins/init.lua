@@ -33,9 +33,6 @@ return require('packer').startup(function(use)
 	-- Packer can manage itself
 	use 'wbthomason/packer.nvim'
 
-	-- Common LUA plugin requirement.
-	use 'nvim-lua/plenary.nvim'
-
 	-- Code completion.
 	-- Collection of common configurations for the Nvim LSP client.
 	use {
@@ -82,6 +79,7 @@ return require('packer').startup(function(use)
 	use {
 		'nvim-telescope/telescope.nvim',
 		config = [[require('plugins.telescope')]],
+		requires = { 'nvim-lua/plenary.nvim' },
 	}
 
 	-- Theme (gruvbox).
@@ -101,6 +99,7 @@ return require('packer').startup(function(use)
 	use {
 		'lewis6991/gitsigns.nvim',
 		config = [[require('plugins.gitsigns')]],
+		requires = { 'nvim-lua/plenary.nvim' },
 	}
 
 	-- File tree viewer.

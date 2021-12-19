@@ -30,4 +30,7 @@
 -- })
 
 
-require('lspconfig').rust_analyzer.setup{}
+require('lspconfig').rust_analyzer.setup {
+	-- Simplify pattern for root dir to speed up neovim starttime.
+	root_dir = require('lspconfig').util.find_git_ancestor
+}

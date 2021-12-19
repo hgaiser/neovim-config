@@ -1,9 +1,33 @@
 -- Install Packer if it is not installed already.
 local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
 	packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+	vim.api.nvim_command('packadd packer.nvim')
 end
+
+-- -- Autocommand that reloads neovim whenever you save the plugins/init.lua file.
+-- vim.cmd([[
+-- 	augroup packer_user_config
+-- 		autocmd!
+-- 		autocmd BufWritePost */plugins/init.lua source <afile> | PackerSync
+-- 	augroup end
+-- ]])
+
+-- -- Use a protected call so we don't error out on first use.
+-- local status_ok, packer = pcall(require, "packer")
+-- if not status_ok then
+-- 	return
+-- end
+
+-- -- Have packer use a popup window
+-- packer.init {
+-- 	display = {
+-- 		open_fn = function()
+-- 			return require("packer.util").float { border = "rounded" }
+-- 		end,
+-- 	},
+-- }
 
 return require('packer').startup(function(use)
 	-- Packer can manage itself
@@ -14,10 +38,23 @@ return require('packer').startup(function(use)
 
 	-- Code completion.
 	-- Collection of common configurations for the Nvim LSP client.
-	use 'neovim/nvim-lspconfig'
-	use 'tami5/lspsaga.nvim'
+	use {
+		'neovim/nvim-lspconfig',
+		config = function()
+			require('plugins.lsp.languages.cpp')
+			require('plugins.lsp.languages.python')
+			require('plugins.lsp.languages.rust')
+		end,
+	}
+	use {
+		'tami5/lspsaga.nvim',
+		config = [[require('plugins.lsp.saga')]],
+	}
 	-- Completion framework.
-	use 'hrsh7th/nvim-cmp'
+	use {
+		'hrsh7th/nvim-cmp',
+		config = [[require('plugins.lsp.cmp')]],
+	}
 	-- LSP completion source for nvim-cmp.
 	use 'hrsh7th/cmp-nvim-lsp'
 	-- Snippet completion source for nvim-cmp.
@@ -28,27 +65,52 @@ return require('packer').startup(function(use)
 	use 'hrsh7th/cmp-path'
 	use 'hrsh7th/cmp-buffer'
 	-- To enable more of the features of rust-analyzer, such as inlay hints and more!
-	use 'simrat39/rust-tools.nvim'
+	-- use {
+	-- 	'simrat39/rust-tools.nvim',
+	-- 	config = [[require('plugins.lsp.languages.rust')]],
+	-- }
 
 	-- TreeSitter
-	use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+	use {
+		'nvim-treesitter/nvim-treesitter',
+		run = ':TSUpdate',
+		config = [[require('plugins.treesitter')]],
+	}
 	use 'nvim-treesitter/nvim-treesitter-textobjects'
 
 	-- Fuzzy finding.
-	use 'nvim-telescope/telescope.nvim'
+	use {
+		'nvim-telescope/telescope.nvim',
+		config = [[require('plugins.telescope')]],
+	}
 
 	-- Theme (gruvbox).
 	use 'rktjmp/lush.nvim'
 	use 'ellisonleao/gruvbox.nvim'
 
-	-- Git gutter.
-	use 'lewis6991/gitsigns.nvim'
+	-- Git signs and text objects.
+	use {
+		'lewis6991/gitsigns.nvim',
+		config = [[require('plugins.gitsigns')]],
+	}
 
 	-- File tree viewer.
-	use 'kyazdani42/nvim-tree.lua'
+	use {
+		'kyazdani42/nvim-tree.lua',
+		config = [[require('plugins.nvim-tree')]],
+	}
 
 	-- Status line (lualine).
-	use 'nvim-lualine/lualine.nvim'
+	use {
+		'nvim-lualine/lualine.nvim',
+		config = [[require('plugins.lualine')]],
+	}
+
+	-- Cache lua plugins to spead up load times.
+	use {
+		'lewis6991/impatient.nvim',
+		config = [[require('plugins.impatient')]],
+	}
 
 	use 'junegunn/vim-easy-align'        -- Alignment around operator
 	use 'tpope/vim-commentary'           -- Comment code.
@@ -61,7 +123,6 @@ return require('packer').startup(function(use)
 	use 'godlygeek/tabular'              -- Tabularizes blocks of texts according to a pattern.
 	use 'mg979/vim-visual-multi'         -- Edit multiple locations simultaneously.
 	use 'editorconfig/editorconfig-vim'  -- Read .editorconfig files to adjust formatting.
-	use 'lewis6991/impatient.nvim'       -- Cache lua plugins to spead up load times.
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

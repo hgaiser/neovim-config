@@ -26,3 +26,19 @@ augroup highlight_yank
 	au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
 augroup END
 ]])
+
+-- Terminal settings
+vim.cmd([[
+augroup TerminalNoSignColumn
+	au!
+	autocmd TermOpen * setlocal nonumber norelativenumber signcolumn=no
+augroup END
+
+" Add SplitTerminal to open a new split terminal.
+command! SplitTerminal 10split | :term
+autocmd BufEnter term://* startinsert
+
+" Map Esc or Ctrl-d to exit terminal insert mode.
+tnoremap <leader><Esc> <C-\><C-n>
+tnoremap <C-d> <C-\><C-n>
+]])

@@ -113,6 +113,8 @@ return require('packer').startup(function(use)
 		'nvim-lualine/lualine.nvim',
 		config = [[require('plugins.lualine')]],
 	}
+	-- Integration with progress notifications
+	use 'arkav/lualine-lsp-progress'
 
 	-- Cache lua plugins to spead up load times.
 	use {
@@ -120,17 +122,17 @@ return require('packer').startup(function(use)
 		config = [[require('plugins.impatient')]],
 	}
 
-	use 'junegunn/vim-easy-align'        -- Alignment around operator
-	use 'tpope/vim-commentary'           -- Comment code.
-	use 'tpope/vim-surround'             -- Extension for changing surroundings.
-	use 'tpope/vim-repeat'               -- Allow repeating of commands like change surroundings.
-	-- use 'tpope/vim-sleuth'               -- Automatically find the indentation given the file and neighbouring files.
-	use 'tpope/vim-fugitive'             -- Git support inside vim.
-	use 'cespare/vim-toml'               -- Formatting for (Cargo).toml files.
-	use 'rust-lang/rust.vim'             -- Formatting for rust files.
-	use 'godlygeek/tabular'              -- Tabularizes blocks of texts according to a pattern.
-	use 'mg979/vim-visual-multi'         -- Edit multiple locations simultaneously.
-	use 'editorconfig/editorconfig-vim'  -- Read .editorconfig files to adjust formatting.
+	use 'junegunn/vim-easy-align'       -- Alignment around operator
+	use 'tpope/vim-commentary'          -- Comment code.
+	use 'tpope/vim-surround'            -- Extension for changing surroundings.
+	use 'tpope/vim-repeat'              -- Allow repeating of commands like change surroundings.
+	-- use 'tpope/vim-sleuth'              -- Automatically find the indentation given the file and neighbouring files.
+	use 'tpope/vim-fugitive'            -- Git support inside vim.
+	use 'cespare/vim-toml'              -- Formatting for (Cargo).toml files.
+	use 'rust-lang/rust.vim'            -- Formatting for rust files.
+	use 'godlygeek/tabular'             -- Tabularizes blocks of texts according to a pattern.
+	use 'mg979/vim-visual-multi'        -- Edit multiple locations simultaneously.
+	use 'editorconfig/editorconfig-vim' -- Read .editorconfig files to adjust formatting.
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

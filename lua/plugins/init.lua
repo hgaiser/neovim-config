@@ -127,6 +127,7 @@ return require('packer').startup(function(use)
 	use 'godlygeek/tabular'             -- Tabularizes blocks of texts according to a pattern.
 	use 'mg979/vim-visual-multi'        -- Edit multiple locations simultaneously.
 	use 'editorconfig/editorconfig-vim' -- Read .editorconfig files to adjust formatting.
+	use 'dstein64/vim-startuptime'      -- Debug startup times of nvim (using :StartupTime).
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

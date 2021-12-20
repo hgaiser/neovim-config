@@ -38,6 +38,7 @@ return require('packer').startup(function(use)
 	use {
 		'neovim/nvim-lspconfig',
 		config = function()
+			require('plugins.lsp.settings')
 			require('plugins.lsp.languages.cpp')
 			require('plugins.lsp.languages.python')
 			-- require('plugins.lsp.languages.rust')

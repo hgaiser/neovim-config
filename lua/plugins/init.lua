@@ -120,7 +120,7 @@ return require('packer').startup(function(use)
 	use 'tpope/vim-commentary'          -- Comment code.
 	use 'tpope/vim-surround'            -- Extension for changing surroundings.
 	use 'tpope/vim-repeat'              -- Allow repeating of commands like change surroundings.
-	-- use 'tpope/vim-sleuth'              -- Automatically find the indentation given the file and neighbouring files.
+	use { 'tpope/vim-sleuth', tag = 'v1.2' }              -- Automatically find the indentation given the file and neighbouring files.
 	use 'tpope/vim-fugitive'            -- Git support inside vim.
 	use 'cespare/vim-toml'              -- Formatting for (Cargo).toml files.
 	use 'rust-lang/rust.vim'            -- Formatting for rust files.

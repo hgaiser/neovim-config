@@ -16,7 +16,8 @@ hi link Operator GruvboxBlue
 " Show selected tab in darker color.
 hi TabLineSel guibg=GruvboxBg0
 
-" Change color of indent marker and folder icon.
-hi link NvimTreeIndentMarker GruvboxOrange
-hi link NvimTreeFolderIcon GruvboxOrange
+" Change color of directories.
+hi link NvimTreeFolderName GruvboxAqua
+hi link NvimTreeEmptyFolderName GruvboxAqua
+hi link NvimTreeOpenedFolderName GruvboxAqua
 ]])

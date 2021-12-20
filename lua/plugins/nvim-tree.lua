@@ -10,7 +10,7 @@ vim.g.nvim_tree_icons = {
 		staged = '●',
 		unmerged = '●',
 		renamed = '➜',
-		untracked = '',
+		untracked = '◌',
 		deleted = '●',
 		ignored = '◌'
 	},
@@ -26,9 +26,9 @@ vim.g.nvim_tree_icons = {
 	}
 }
 vim.g.nvim_tree_indent_markers = 1
-vim.cmd "highlight def link NvimTreeFolderName GruvboxAqua"
-vim.cmd "highlight def link NvimTreeOpenedFolderName GruvboxAqua"
-vim.cmd "highlight def link NvimTreeRootFolder GruvboxGreen"
+vim.cmd("highlight def link NvimTreeFolderName GruvboxAqua")
+vim.cmd("highlight def link NvimTreeOpenedFolderName GruvboxAqua")
+vim.cmd("highlight def link NvimTreeRootFolder GruvboxGreen")
 
 require('nvim-tree').setup {
 	auto_close = true,

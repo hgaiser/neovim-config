@@ -15,3 +15,9 @@ smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab
 imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
 smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
 ]])
+
+-- Remap Ctrl+w, <hjkl> to Ctrl+<hjkl>
+utils.map { 'n', '<c-h>', '<c-w>h' }
+utils.map { 'n', '<c-j>', '<c-w>j' }
+utils.map { 'n', '<c-k>', '<c-w>k' }
+utils.map { 'n', '<c-l>', '<c-w>l' }

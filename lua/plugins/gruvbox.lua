@@ -1,6 +1,10 @@
-runtime colors/gruvbox.vim
+vim.o.background = 'dark'
+vim.g.gruvbox_sign_column = 'bg0'
+vim.g.gruvbox_contrast_dark = 'hard'
+vim.opt.termguicolors = true
 
-let g:colors_name = "gruvbox-custom"
+vim.cmd([[
+colorscheme gruvbox
 
 " Set white text color to be a bit brighter.
 hi Normal guifg=#ede7d8
@@ -15,3 +19,4 @@ hi TabLineSel guibg=GruvboxBg0
 " Change color of indent marker and folder icon.
 hi link NvimTreeIndentMarker GruvboxOrange
 hi link NvimTreeFolderIcon GruvboxOrange
+]])

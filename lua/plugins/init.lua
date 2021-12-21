@@ -39,9 +39,13 @@ return require('packer').startup(function(use)
 		'neovim/nvim-lspconfig',
 		config = function()
 			require('plugins.lsp.settings')
-			require('plugins.lsp.languages.cpp')
-			require('plugins.lsp.languages.python')
-			-- require('plugins.lsp.languages.rust')
+			require('lspconfig').clangd.setup {}
+			require('lspconfig').pyright.setup {}
+			require('lspconfig').dockerls.setup {}
+			-- require('lspconfig').rust_analyzer.setup {
+			-- 	-- Simplify pattern for root dir to speed up neovim starttime.
+			-- 	root_dir = require('lspconfig').util.find_git_ancestor
+			-- }
 		end,
 	}
 	use {

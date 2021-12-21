@@ -41,7 +41,12 @@ return require('packer').startup(function(use)
 			require('plugins.lsp.settings')
 			require('lspconfig').clangd.setup {}
 			require('lspconfig').pyright.setup {}
+			require('lspconfig').sumneko_lua.setup {}
 			require('lspconfig').dockerls.setup {}
+			require('lspconfig').yamlls.setup {}
+			require('lspconfig').jsonls.setup { cmd = { "vscode-json-languageserver", "--stdio" } }
+			require('lspconfig').bashls.setup {}
+			require('lspconfig').cmake.setup{}
 			-- require('lspconfig').rust_analyzer.setup {
 			-- 	-- Simplify pattern for root dir to speed up neovim starttime.
 			-- 	root_dir = require('lspconfig').util.find_git_ancestor

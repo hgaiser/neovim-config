@@ -35,6 +35,9 @@ require('nvim-tree').setup {
 	filters = {
 		dotfiles = true,
 	},
+	git = {
+		ignore = false,
+	},
 }
 
 utils.map {'n', '<Leader>n', ':NvimTreeToggle<CR>'  }

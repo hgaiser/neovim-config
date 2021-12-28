@@ -41,7 +41,16 @@ return require('packer').startup(function(use)
 			require('plugins.lsp.settings')
 			require('lspconfig').clangd.setup {}
 			require('lspconfig').pyright.setup {}
-			require('lspconfig').sumneko_lua.setup {}
+			require('lspconfig').sumneko_lua.setup {
+				settings = {
+					Lua = {
+						diagnostics = {
+							-- Set `vim` as a known global, so it doesn't complain it is unknown in nvim config.
+							globals = { 'vim' }
+						},
+					}
+				}
+			}
 			require('lspconfig').dockerls.setup {}
 			require('lspconfig').yamlls.setup {}
 			require('lspconfig').jsonls.setup { cmd = { "vscode-json-languageserver", "--stdio" } }

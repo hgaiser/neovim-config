@@ -25,7 +25,13 @@ require('rust-tools').setup({
 					command = 'clippy'
 				},
 			}
-		}
+		},
+
+		-- Disable support for standalone .rs files to improve startup time.
+		standalone = false,
+
+		-- Use a faster root_dir function to improve startup time.
+		root_dir = require('lspconfig').util.find_git_ancestor,
 	},
 })
 

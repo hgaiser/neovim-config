@@ -6,5 +6,5 @@ utils.map { 'n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>' }
 
 -- Show line diagnostics on hover.
 vim.cmd([[
-autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
+autocmd CursorHold * lua vim.diagnostic.open_float()
 ]])

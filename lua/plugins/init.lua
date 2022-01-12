@@ -15,7 +15,7 @@ vim.cmd([[
 ]])
 
 -- Use a protected call so we don't error out on first use.
-local status_ok, packer = pcall(require, "packer")
+local status_ok, packer = pcall(require, 'packer')
 if not status_ok then
 	return
 end
@@ -24,7 +24,7 @@ end
 packer.init {
 	display = {
 		open_fn = function()
-			return require("packer.util").float { border = "rounded" }
+			return require('packer.util').float { border = 'rounded' }
 		end,
 	},
 }
@@ -53,7 +53,7 @@ return require('packer').startup(function(use)
 			}
 			require('lspconfig').dockerls.setup {}
 			require('lspconfig').yamlls.setup {}
-			require('lspconfig').jsonls.setup { cmd = { "vscode-json-languageserver", "--stdio" } }
+			require('lspconfig').jsonls.setup { cmd = { 'vscode-json-languageserver', '--stdio' } }
 			require('lspconfig').bashls.setup {}
 			require('lspconfig').cmake.setup{}
 			-- require('lspconfig').rust_analyzer.setup {
@@ -75,7 +75,12 @@ return require('packer').startup(function(use)
 	use 'hrsh7th/cmp-nvim-lsp'
 	-- Snippet completion source for nvim-cmp.
 	use 'hrsh7th/cmp-vsnip'
-	use 'hrsh7th/vim-vsnip'
+	use {
+		'hrsh7th/vim-vsnip',
+		config = function()
+			vim.g.vsnip_snippet_dir = '~/.config/nvim/vsnip'
+		end,
+	}
 	use 'rafamadriz/friendly-snippets' -- Set of commonly used snippets.
 	-- Other useful completion sources (filesystem and buffered words).
 	use 'hrsh7th/cmp-path'

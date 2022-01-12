@@ -57,10 +57,6 @@ return packer.startup(function(use)
 			require('lspconfig').jsonls.setup { cmd = { 'vscode-json-languageserver', '--stdio' } }
 			require('lspconfig').bashls.setup {}
 			require('lspconfig').cmake.setup{}
-			-- require('lspconfig').rust_analyzer.setup {
-			-- 	-- Simplify pattern for root dir to speed up neovim starttime.
-			-- 	root_dir = require('lspconfig').util.find_git_ancestor
-			-- }
 		end,
 	}
 	use {
@@ -108,10 +104,10 @@ return packer.startup(function(use)
 	}
 
 	-- Theme (gruvbox).
-	use 'rktjmp/lush.nvim'
 	use {
 		'ellisonleao/gruvbox.nvim',
 		config = [[require('plugins.gruvbox')]],
+		requires = { 'rktjmp/lush.nvim' },
 	}
 
 	-- Git signs and text objects.

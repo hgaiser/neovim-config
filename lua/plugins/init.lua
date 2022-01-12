@@ -20,8 +20,9 @@ if not status_ok then
 	return
 end
 
--- Have packer use a popup window
+-- Have packer use a popup window.
 packer.init {
+	compile_path = require('packer.util').join_paths(vim.fn.stdpath('config'), 'plugin', 'packer_compiled.lua'),
 	display = {
 		open_fn = function()
 			return require('packer.util').float { border = 'rounded' }
@@ -78,7 +79,7 @@ return require('packer').startup(function(use)
 	use {
 		'hrsh7th/vim-vsnip',
 		config = function()
-			vim.g.vsnip_snippet_dir = '~/.config/nvim/vsnip'
+			vim.g.vsnip_snippet_dir = require('packer.util').join_paths(vim.fn.stdpath('config'), 'vsnip')
 		end,
 	}
 	use 'rafamadriz/friendly-snippets' -- Set of commonly used snippets.

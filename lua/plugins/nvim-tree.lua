@@ -37,6 +37,6 @@ require('nvim-tree').setup {
 	},
 }
 
-utils.map {'n', '<Leader>n', ':NvimTreeToggle<CR>'  }
-utils.map {'n', '`'        , ':NvimTreeToggle<CR>'  }
-utils.map {'n', '<Leader>`', ':NvimTreeFindFile<CR>'}
+utils.map {'n', '<Leader>n', ':NvimTreeToggle<CR>'  , silent = true}
+utils.map {'n', '`'        , ':NvimTreeToggle<CR>'  , silent = true}
+utils.map {'n', '<Leader>`', ':NvimTreeFindFile<CR>', silent = true}

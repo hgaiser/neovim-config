@@ -41,4 +41,8 @@ autocmd BufEnter term://* startinsert
 " Map Esc or Ctrl-d to exit terminal insert mode.
 tnoremap <leader><Esc> <C-\><C-n>
 tnoremap <C-d> <C-\><C-n>
+
+" Use JsonFormat command to format json files.
+command! JsonFormat :%!python -m json.tool
 ]])
+

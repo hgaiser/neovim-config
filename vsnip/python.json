@@ -1,0 +1,25 @@
+{
+	"Parse Args": {
+		"prefix": ["parse_args"],
+		"body": [
+				"def parse_args() -> argparse.Namespace:",
+				"\tparser = argparse.ArgumentParser(description=\"$1\")",
+				"",
+				"\tparser.add_argument('$2',${3: action=${4:'store_true'},}${5: default=${6:'default'},}${7: type=${8:int},} help=\"$9\")",
+				"",
+				"\treturn parser.parse_args()"
+		],
+		"description": "Argument parsing function."
+	},
+	"Main": {
+		"prefix": ["main"],
+		"body": [
+				"def main() -> None:",
+				"\t${1:pass}",
+				"",
+				"if __name__ == '__main__':",
+				"\tmain()"
+		],
+		"description": "Argument parsing function."
+	}
+}

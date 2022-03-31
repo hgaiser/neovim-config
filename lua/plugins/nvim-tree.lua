@@ -28,7 +28,6 @@ vim.g.nvim_tree_icons = {
 vim.g.nvim_tree_indent_markers = 1
 
 require('nvim-tree').setup {
-	auto_close = true,
 	filters = {
 		dotfiles = true,
 	},
@@ -40,3 +39,8 @@ require('nvim-tree').setup {
 utils.map {'n', '<Leader>n', ':NvimTreeToggle<CR>'  , silent = true}
 utils.map {'n', '`'        , ':NvimTreeToggle<CR>'  , silent = true}
 utils.map {'n', '<Leader>`', ':NvimTreeFindFile<CR>', silent = true}
+
+-- Autoclose if nvim-tree is the last window open.
+vim.cmd([[
+autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
+]])

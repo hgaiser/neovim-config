@@ -25,7 +25,6 @@ vim.g.nvim_tree_icons = {
 		symlink_open = '▾',
 	}
 }
-vim.g.nvim_tree_indent_markers = 1
 
 require('nvim-tree').setup {
 	filters = {
@@ -34,6 +33,7 @@ require('nvim-tree').setup {
 	git = {
 		ignore = false,
 	},
+	nvim_tree_indent_markers = 1,
 }
 
 utils.map {'n', '<Leader>n', ':NvimTreeToggle<CR>'  , silent = true}

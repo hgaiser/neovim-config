@@ -6,7 +6,6 @@ require('lspsaga').init_lsp_saga {
 	infor_sign = '●',
 	code_action_icon = '●',
 	diagnostic_header_icon = '',
-	code_action_icon = '',
 	finder_definition_icon = '',
 	finder_reference_icon = '',
 	definition_preview_icon = '',
@@ -25,14 +24,14 @@ require('lspsaga').init_lsp_saga {
 }
 
 -- Apply code actions.
-utils.map { 'n', '<C-s><C-s>', ':Lspsaga code_action<CR>' }
-utils.map { 'v', '<C-s><C-s>', ':<C-U>Lspsaga range_code_action<CR>' }
+utils.map { 'n', '<C-s><C-s>', ':Lspsaga code_action<CR>', silent = true }
+utils.map { 'v', '<C-s><C-s>', ':<C-U>Lspsaga range_code_action<CR>', silent = true }
 
 -- Show documentation.
-utils.map { 'n', '?', ':Lspsaga hover_doc<CR>' }
+utils.map { 'n', '?', ':Lspsaga hover_doc<CR>', silent = true }
 
 -- Rename.
-utils.map { 'n', '<Leader>rn', ':Lspsaga rename<CR>' }
+utils.map { 'n', '<Leader>rn', ':Lspsaga rename<CR>', silent = true }
 
 -- Remove retarded purple color on diagnostic floating windows.
 vim.cmd([[

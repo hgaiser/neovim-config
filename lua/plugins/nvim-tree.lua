@@ -1,31 +1,3 @@
-vim.g.nvim_tree_show_icons = {
-	git = 1,
-	folders = 1,
-	files = 0,
-	folder_arrows = 0,
-}
-vim.g.nvim_tree_icons = {
-	git = {
-		unstaged = '●',
-		staged = '●',
-		unmerged = '●',
-		renamed = '➜',
-		untracked = '◌',
-		deleted = '●',
-		ignored = '◌'
-	},
-	folder = {
-		arrow_open = '▾',
-		arrow_closed = '▸',
-		default = '▸',
-		open = '▾',
-		empty = '▸',
-		empty_open = '▾',
-		symlink = '▸',
-		symlink_open = '▾',
-	}
-}
-
 require('nvim-tree').setup {
 	filters = {
 		dotfiles = true,
@@ -33,7 +5,40 @@ require('nvim-tree').setup {
 	git = {
 		ignore = false,
 	},
-	nvim_tree_indent_markers = 1,
+	renderer = {
+		indent_markers = {
+			enable = true,
+		},
+		icons = {
+			show = {
+				git = true,
+				folder = true,
+				file = false,
+				folder_arrow = false,
+			},
+			glyphs = {
+				git = {
+					unstaged = '●',
+					staged = '●',
+					unmerged = '●',
+					renamed = '➜',
+					untracked = '◌',
+					deleted = '●',
+					ignored = '◌'
+				},
+				folder = {
+					arrow_open = '▾',
+					arrow_closed = '▸',
+					default = '▸',
+					open = '▾',
+					empty = '▸',
+					empty_open = '▾',
+					symlink = '▸',
+					symlink_open = '▾',
+				},
+			},
+		},
+	},
 }
 
 utils.map {'n', '<Leader>n', ':NvimTreeToggle<CR>'  , silent = true}

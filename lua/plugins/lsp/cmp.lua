@@ -1,5 +1,4 @@
 local cmp = require('cmp')
-local types = require('cmp.types')
 
 cmp.setup({
 	-- Enable LSP snippets

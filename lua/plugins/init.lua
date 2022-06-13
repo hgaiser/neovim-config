@@ -74,9 +74,7 @@ return packer.startup(function(use)
 	use 'hrsh7th/cmp-vsnip'
 	use {
 		'hrsh7th/vim-vsnip',
-		config = function()
-			vim.g.vsnip_snippet_dir = require('packer.util').join_paths(vim.fn.stdpath('config'), 'vsnip')
-		end,
+		config = [[require('plugins.vsnip')]],
 	}
 	use 'rafamadriz/friendly-snippets' -- Set of commonly used snippets.
 	-- Other useful completion sources (filesystem and buffered words).

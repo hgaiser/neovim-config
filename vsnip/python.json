@@ -5,11 +5,18 @@
 				"def parse_args() -> argparse.Namespace:",
 				"\tparser = argparse.ArgumentParser(description=\"$1\")",
 				"",
-				"\tparser.add_argument('$2',${3: action=${4:'store_true'},}${5: default=${6:'default'},}${7: type=${8:int},} help=\"$9\")",
+				"\tparser.add_argument('$2',${3: default=${4:default},}${5: type=${6:int},} help=\"$7\")",
 				"",
 				"\treturn parser.parse_args()"
 		],
 		"description": "Argument parsing function."
+	},
+	"Add parse argument": {
+		"prefix": ["arg"],
+		"body": [
+			"parser.add_argument('$2',${3: default=${4:default},}${5: type=${6:int},} help=\"$7\")"
+		],
+		"description": "Add parser argument."
 	},
 	"Main": {
 		"prefix": ["main"],

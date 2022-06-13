@@ -3,7 +3,10 @@
 		"prefix": ["parse_args"],
 		"body": [
 				"def parse_args() -> argparse.Namespace:",
-				"\tparser = argparse.ArgumentParser(description=\"$1\")",
+				"\tparser = argparse.ArgumentParser(",
+				"\t\tdescription=\"$1\"",
+				"\t\tformatter_class=argparse.ArgumentDefaultsHelpFormatter)",
+				"\t)",
 				"",
 				"\tparser.add_argument('$2',${3: default=${4:default},}${5: type=${6:int},} help=\"$7\")",
 				"",

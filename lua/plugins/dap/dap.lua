@@ -1,3 +1,7 @@
+vim.fn.sign_define('DapBreakpoint', {text='⏹', texthl='GruvboxRed', linehl='', numhl=''})
+vim.fn.sign_define('DapBreakpointCondition', {text='⏹', texthl='GruvboxOrange', linehl='', numhl=''})
+vim.fn.sign_define('DapLogPoint', {text='⏹', texthl='GruvboxBlue', linehl='', numhl=''})
+
 utils.map { 'n', '<F5>', ':lua require("dap").continue()<CR>', silent = true }
 utils.map { 'n', '<F10>', ':lua require("dap").step_over()<CR>', silent = true }
 utils.map { 'n', '<F11>', ':lua require("dap").step_into()<CR>', silent = true }

@@ -94,12 +94,24 @@ return packer.startup(function(use)
 	}
 	use 'nvim-treesitter/nvim-treesitter-textobjects'
 
+	-- Debug adapter protocol
+	use {
+		'mfussenegger/nvim-dap',
+		config = [[require('plugins.dap.dap')]],
+	}
+	use {
+		'rcarriga/nvim-dap-ui',
+		requires = {"mfussenegger/nvim-dap"},
+		config = [[require('plugins.dap.ui')]],
+	}
+
 	-- Fuzzy finding.
 	use {
 		'nvim-telescope/telescope.nvim',
 		config = [[require('plugins.telescope')]],
 		requires = { 'nvim-lua/plenary.nvim' },
 	}
+	use {'nvim-telescope/telescope-ui-select.nvim' }
 
 	-- Theme (gruvbox).
 	use {

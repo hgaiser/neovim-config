@@ -56,7 +56,16 @@ return packer.startup(function(use)
 			require('lspconfig').yamlls.setup {}
 			require('lspconfig').jsonls.setup { cmd = { 'vscode-json-languageserver', '--stdio' } }
 			require('lspconfig').bashls.setup {}
-			require('lspconfig').cmake.setup{}
+			require('lspconfig').cmake.setup {}
+			require('lspconfig').volar.setup {
+				filetypes = {'vue'},
+				init_options = {
+					typescript = {
+						serverPath = '/usr/lib/node_modules/typescript/lib/tsserverlibrary.js'
+					}
+				}
+			}
+			require('lspconfig').tsserver.setup {}
 		end,
 	}
 	use {

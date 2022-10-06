@@ -115,7 +115,7 @@ return packer.startup(function(use)
 		'lewis6991/gitsigns.nvim',
 		config = [[require('plugins.gitsigns')]],
 		requires = { 'nvim-lua/plenary.nvim' },
-		tag = 'v0.4',
+		tag = 'v0.5',
 	}
 
 	-- File tree viewer.

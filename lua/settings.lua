@@ -3,6 +3,7 @@ vim.opt.tabstop                = 4                -- Tabs are 4 spaces.
 vim.opt.shiftwidth             = 4                -- Number of spaces to insert when pressing TAB.
 vim.opt.copyindent             = true             -- Use the indentation from the previous line.
 vim.opt.mouse                  = 'a'              -- Enable mouse mode.
+vim.opt.mousemodel             = extend           -- Disable r-click popup-menu.
 vim.opt.number                 = true             -- Set line numbers at the left.
 vim.opt.list                   = true             -- Show tab and trailing spaces.
 vim.opt.listchars              = 'tab:›─,trail:␣' -- Show tabs and trailing whitespaces.

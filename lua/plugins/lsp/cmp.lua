@@ -12,11 +12,7 @@ cmp.setup({
 		['<Up>'] = cmp.mapping.select_prev_item(),
 		['<Tab>'] = cmp.mapping.select_next_item(),
 		['<S-Tab>'] = cmp.mapping.select_prev_item(),
-		['<C-Space>'] = cmp.mapping.complete(),
-		['<CR>'] = cmp.mapping.confirm({
-			behavior = cmp.ConfirmBehavior.Insert,
-			select = true,
-		})
+		['<C-Space>'] = cmp.mapping.complete()
 	},
 
 	-- Installed sources

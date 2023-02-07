@@ -157,6 +157,16 @@ return packer.startup(function(use)
 		config = [[require('plugins.impatient')]],
 	}
 
+	-- Popup when pressing a shortcut.
+	use {
+		"folke/which-key.nvim",
+		config = function()
+			vim.o.timeout = true
+			vim.o.timeoutlen = 300
+			require("which-key").setup { }
+		end
+	}
+
 	use 'junegunn/vim-easy-align'       -- Alignment around operator
 	use 'tpope/vim-commentary'          -- Comment code.
 	use 'tpope/vim-surround'            -- Extension for changing surroundings.

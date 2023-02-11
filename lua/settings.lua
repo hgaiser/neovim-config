@@ -2,18 +2,18 @@ vim.opt.expandtab              = false            -- Use tabs for indentation.
 vim.opt.tabstop                = 4                -- Tabs are 4 spaces.
 vim.opt.shiftwidth             = 4                -- Number of spaces to insert when pressing TAB.
 vim.opt.copyindent             = true             -- Use the indentation from the previous line.
-vim.opt.mouse                  = 'a'              -- Enable mouse mode.
-vim.opt.mousemodel             = 'extend'         -- Disable r-click popup-menu.
+vim.opt.mouse                  = "a"              -- Enable mouse mode.
+vim.opt.mousemodel             = "extend"         -- Disable r-click popup-menu.
 vim.opt.number                 = true             -- Set line numbers at the left.
 vim.opt.list                   = true             -- Show tab and trailing spaces.
-vim.opt.listchars              = 'tab:›─,trail:␣' -- Show tabs and trailing whitespaces.
+vim.opt.listchars              = "tab:›─,trail:␣" -- Show tabs and trailing whitespaces.
 vim.opt.wrap                   = false            -- Disable wrapping of lines.
-vim.opt.nrformats              = 'bin,hex,alpha'  -- Also consider the alphabet when incrementing/decrementing.
+vim.opt.nrformats              = "bin,hex,alpha"  -- Also consider the alphabet when incrementing/decrementing.
 vim.opt.updatetime             = 500              -- Reduce the time before a backup is saved to disk.
 vim.opt.undofile               = true             -- Remain persistent undo file between vim sessions.
 vim.opt.splitbelow             = true             -- Split files below current open file.
 vim.opt.splitright             = true             -- Split files right of current open file.
-vim.opt.signcolumn             = 'yes'            -- Always show the sign column (GitGutter / Coc).
+vim.opt.signcolumn             = "yes"            -- Always show the sign column (GitGutter / Coc).
 vim.opt.showmode               = false            -- Don't show the mode (like `-- INSERT --`), because this is shown in lualine.
 vim.opt.laststatus             = 3                -- Show the status bar only on the entire nvim window, not per buffer.
 vim.opt.cmdheight              = 0                -- Hide the command line when there is no command.
@@ -49,3 +49,23 @@ tnoremap <C-d> <C-\><C-n>
 command! JsonFormat :%!python -m json.tool
 ]])
 
+-- Set LSP diagnostic icons.
+vim.fn.sign_define(
+	"DiagnosticSignError",
+	{ texthl = "DiagnosticSignError", text = "●", numhl = "DiagnosticSignError", guibg = "NONE" }
+)
+
+vim.fn.sign_define(
+	"DiagnosticSignWarn",
+	{ texthl = "DiagnosticSignWarn", text = "●", numhl = "DiagnosticSignWarn", guibg = "NONE" }
+)
+
+vim.fn.sign_define(
+	"DiagnosticSignHint",
+	{ texthl = "DiagnosticSignHint", text = "●", numhl = "DiagnosticSignHint", guibg = "NONE" }
+)
+
+vim.fn.sign_define(
+	"DiagnosticSignInfo",
+	{ texthl = "DiagnosticSignInfo", text = "●", numhl = "DiagnosticSignInfo", guibg = "NONE" }
+)

@@ -8,13 +8,14 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 require("lazy").setup({
 	spec = {
-		{ import = "plugins.ui" },
+		{ import = "plugins.specs" },
+		{ import = "plugins.specs.lsp" },
 	},
 	defaults = {
 		lazy = false,
-		-- always use the latest git commit
+		-- Always use the latest git commit.
 		version = false,
 	},
 	-- Use this colorscheme when first installing.
-	install = { colorscheme = { "habamax" } },
+	install = { colorscheme = { "gruvbox", "habamax" } },
 })

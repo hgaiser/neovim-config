@@ -5,8 +5,8 @@ return {
 			autoSetHints = true,
 			inlay_hints = {
 				show_parameter_hints = true,
-				parameter_hints_prefix = '',
-				other_hints_prefix = '',
+				parameter_hints_prefix = "",
+				other_hints_prefix = "",
 			},
 		},
 
@@ -19,10 +19,10 @@ return {
 			settings = {
 				-- to enable rust-analyzer settings visit:
 				-- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
-				['rust-analyzer'] = {
+				["rust-analyzer"] = {
 					-- enable clippy on save
 					checkOnSave = {
-						command = 'clippy'
+						command = "clippy"
 					},
 				}
 			},
@@ -31,7 +31,10 @@ return {
 			standalone = false,
 
 			-- Use a faster root_dir function to improve startup time.
-			root_dir = require('lspconfig').util.find_git_ancestor,
+			root_dir = require("lspconfig").util.find_git_ancestor,
 		},
+		dependencies = {
+			"neovim/nvim-lspconfig",
+		}
 	}
 }

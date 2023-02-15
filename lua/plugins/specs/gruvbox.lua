@@ -8,7 +8,8 @@ return {
 				GitSignsAdd = { bg = "NONE" },
 				GitSignsChange = { bg = "NONE" },
 				GitSignsDelete = { bg = "NONE" },
-			}
+			},
+			italic = false,
 		},
 		init = function()
 			vim.cmd.colorscheme("gruvbox")

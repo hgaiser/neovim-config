@@ -12,7 +12,13 @@ return {
 			},
 		},
 		opts = {
+			enable_git_status = true,
+			enable_diagnostics = false,
+			close_if_last_window = true,
 			default_component_configs = {
+				container = {
+					enable_character_fade = false
+				},
 				name = {
 					use_git_status_colors = false,
 				},
@@ -20,7 +26,7 @@ return {
 					symbols = {
 						-- Change type
 						added     = "✚",
-						modified  = "",
+						modified  = "✱",
 						deleted   = "✖",
 						renamed   = "",
 						-- Status type
@@ -31,7 +37,7 @@ return {
 						conflict  = "",
 					}
 				},
-			}
+			},
 		}
 	},
 }

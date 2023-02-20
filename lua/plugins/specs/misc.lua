@@ -21,4 +21,12 @@ return {
 	{ "smjonas/inc-rename.nvim" },
 	-- Tabularizes blocks of texts according to a pattern.
 	{ "godlygeek/tabular" },
+	-- Alignment around operator
+	{ "junegunn/vim-easy-align" },
+	-- Allow repeating of commands like change surroundings.
+	{ "tpope/vim-repeat" },
+	-- Formatting for rust files.
+	{ "rust-lang/rust.vim" },
+	-- Formatting for (Cargo).toml files.
+	{ "cespare/vim-toml" },
 }

@@ -19,4 +19,6 @@ return {
 	{ "rust-lang/rust.vim" },
 	-- LSP renaming.
 	{ "smjonas/inc-rename.nvim" },
+	-- Tabularizes blocks of texts according to a pattern.
+	{ "godlygeek/tabular" },
 }

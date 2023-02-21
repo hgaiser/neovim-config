@@ -5,6 +5,20 @@ return {
 			servers = {
 				clangd = {},
 				pyright = {},
+				dockerls = {},
+				yamlls = {},
+				jsonls = { cmd = { 'vscode-json-languageserver', '--stdio' } },
+				bashls = {},
+				cmake = {},
+				volar = {
+					filetypes = {'vue'},
+					init_options = {
+						typescript = {
+							serverPath = '/usr/lib/node_modules/typescript/lib/tsserverlibrary.js'
+						}
+					}
+				},
+				tsserver = {},
 			},
 			setup = {
 				["*"] = function(server, opts) end,

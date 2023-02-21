@@ -3,12 +3,7 @@ return {
 		"ellisonleao/gruvbox.nvim",
 		opts = {
 			contrast = "hard",
-			overrides = {
-				SignColumn = { bg = "NONE" },
-				GitSignsAdd = { bg = "NONE" },
-				GitSignsChange = { bg = "NONE" },
-				GitSignsDelete = { bg = "NONE" },
-			},
+			transparent_mode = true,
 			italic = false,
 		},
 		init = function()

@@ -17,8 +17,6 @@ return {
 	{ "cespare/vim-toml" },
 	-- Formatting for rust files.
 	{ "rust-lang/rust.vim" },
-	-- LSP renaming.
-	{ "smjonas/inc-rename.nvim" },
 	-- Tabularizes blocks of texts according to a pattern.
 	{ "godlygeek/tabular" },
 	-- Alignment around operator

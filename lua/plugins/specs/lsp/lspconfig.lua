@@ -40,6 +40,7 @@ return {
 		keys = {
 			{ "gd", "<cmd>Telescope lsp_definitions<cr>", desc = "Definition" },
 			{ "gr", "<cmd>Telescope lsp_references<cr>", desc = "References" },
+			{ "<leader>cr", vim.lsp.buf.rename, desc = "Rename"}
 		},
 	},
 }

@@ -12,7 +12,8 @@ return {
 				hint = "hint",
 				information = "info"
 			},
-			use_diagnostic_signs = false
+			use_diagnostic_signs = false,
+			auto_preview = false,
 		},
 		keys = {
 			{ "<leader>ct", "<cmd>TroubleToggle<cr>", desc = "Trouble"}

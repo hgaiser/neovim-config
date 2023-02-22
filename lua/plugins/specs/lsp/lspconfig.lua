@@ -54,7 +54,10 @@ return {
 		keys = {
 			{ "gd", "<cmd>Telescope lsp_definitions<cr>", desc = "Definition" },
 			{ "gr", "<cmd>Telescope lsp_references<cr>", desc = "References" },
-			{ "<leader>cr", vim.lsp.buf.rename, desc = "Rename"}
+			{ "?", vim.lsp.buf.hover, desc = "Type information"},
+			{ "<leader>cr", vim.lsp.buf.rename, desc = "Rename"},
+			{ "<leader>ca", vim.lsp.buf.code_action, desc = "Code action"},
+			{ "<leader>cd", vim.diagnostic.open_float, desc = "Diagnostic"},
 		},
 	},
 }

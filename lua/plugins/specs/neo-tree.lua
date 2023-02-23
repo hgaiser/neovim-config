@@ -9,7 +9,13 @@ return {
 			enable_git_status = true,
 			enable_diagnostics = false,
 			close_if_last_window = true,
+			window = {
+				width = 30,
+			},
 			default_component_configs = {
+				indent = {
+					indent_size = 1,
+				},
 				icon = {
 					folder_closed = "",
 					folder_open = "",

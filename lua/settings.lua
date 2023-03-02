@@ -50,22 +50,12 @@ command! JsonFormat :%!python -m json.tool
 ]])
 
 -- Set LSP diagnostic icons.
-vim.fn.sign_define(
-	"DiagnosticSignError",
-	{ texthl = "DiagnosticSignError", text = "●", numhl = "DiagnosticSignError", guibg = "NONE" }
-)
+vim.fn.sign_define("DiagnosticSignError", { texthl = "DiagnosticSignError", text = "●", numhl = "DiagnosticSignError", guibg = "NONE" })
+vim.fn.sign_define("DiagnosticSignWarn",  { texthl = "DiagnosticSignWarn",  text = "●", numhl = "DiagnosticSignWarn",  guibg = "NONE" })
+vim.fn.sign_define("DiagnosticSignHint",  { texthl = "DiagnosticSignHint",  text = "●", numhl = "DiagnosticSignHint",  guibg = "NONE" })
+vim.fn.sign_define("DiagnosticSignInfo",  { texthl = "DiagnosticSignInfo",  text = "●", numhl = "DiagnosticSignInfo",  guibg = "NONE" })
 
-vim.fn.sign_define(
-	"DiagnosticSignWarn",
-	{ texthl = "DiagnosticSignWarn", text = "●", numhl = "DiagnosticSignWarn", guibg = "NONE" }
-)
-
-vim.fn.sign_define(
-	"DiagnosticSignHint",
-	{ texthl = "DiagnosticSignHint", text = "●", numhl = "DiagnosticSignHint", guibg = "NONE" }
-)
-
-vim.fn.sign_define(
-	"DiagnosticSignInfo",
-	{ texthl = "DiagnosticSignInfo", text = "●", numhl = "DiagnosticSignInfo", guibg = "NONE" }
-)
+-- Set DAP icons.
+vim.fn.sign_define('DapBreakpoint',          {text='⏹', texthl='GruvboxRed',    linehl='', numhl=''})
+vim.fn.sign_define('DapBreakpointCondition', {text='⏹', texthl='GruvboxOrange', linehl='', numhl=''})
+vim.fn.sign_define('DapLogPoint',            {text='⏹', texthl='GruvboxBlue',   linehl='', numhl=''})

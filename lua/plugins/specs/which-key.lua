@@ -26,7 +26,7 @@ return {
 				["<leader>gh"] = { name = "Hunk" },
 				["<leader>gb"] = { name = "Buffer" },
 
-				["<leader>d"] = { name = "Diagnostics" },
+				["<leader>d"] = { name = "Debugging" },
 			})
 		end,
 	},

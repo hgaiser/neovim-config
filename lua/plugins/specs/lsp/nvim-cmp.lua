@@ -35,5 +35,6 @@ return {
 				},
 			}
 		end,
-	}
+	},
+	{ "hrsh7th/cmp-path" },
 }

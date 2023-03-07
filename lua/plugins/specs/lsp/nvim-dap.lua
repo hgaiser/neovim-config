@@ -4,6 +4,7 @@ return {
 		config = function(plugin, opts)
 			-- TODO: Is this not the same as plugin?
 			dap = require("dap")
+
 			dap.adapters.lldb = {
 				type = "executable",
 				command = "/usr/bin/lldb-vscode",
@@ -16,7 +17,7 @@ return {
 				type = "lldb",
 				request = "launch",
 				program = function()
-				  return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
 				end,
 				cwd = "${workspaceFolder}",
 				stopOnEntry = false,
@@ -24,14 +25,34 @@ return {
 			  },
 			}
 
-			-- If you want to use this for Rust and C, add something like this:
-
 			dap.configurations.c = dap.configurations.cpp
 			dap.configurations.rust = dap.configurations.cpp
+
+			dap.adapters.python = {
+				type = "executable";
+				command = "/usr/bin/python";
+				args = { "-m", "debugpy.adapter" };
+			}
+			dap.configurations.python = {
+				{
+					-- The first three options are required by nvim-dap
+					type = "python",
+					request = "launch",
+					name = "Launch",
+
+					-- Launch the current file.
+					program = "${file}",
+				},
+			}
+
+			-- Load launch.json files for additional configurations.
+			require("dap.ext.vscode").load_launchjs()
 		end,
 		keys = function(plugin, opts)
 			dap = require("dap")
 			return {
+				{ "<leader>dl", require("dap.ext.vscode").load_launchjs, desc = "Load launch.json" },
+				{ "<leader>dL", function() vim.fn.mkdir(".vscode", "p"); vim.cmd("vsplit .vscode/launch.json") end, desc = "Edit launch.json" },
 				{ "<leader>dc", dap.continue, desc = "Continue debugging" },
 				{ "<leader>dso", dap.step_over, desc = "Over" },
 				{ "<leader>dsi", dap.step_into, desc = "Into" },
@@ -47,7 +68,13 @@ return {
 	{
 		"rcarriga/nvim-dap-ui",
 		config = function(plugin, opts)
-			require("dapui").setup({})
+			require("dapui").setup({
+				icons = {
+					collapsed = "",
+					current_frame = "",
+					expanded = ""
+				},
+			})
 			require("dap").listeners.after.event_initialized["dapui_config"] = function()
 				dapui.open()
 			end

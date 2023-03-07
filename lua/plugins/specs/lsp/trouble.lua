@@ -3,8 +3,8 @@ return {
 		"folke/trouble.nvim",
 		opts = {
 			icons = false,
-			fold_open = "▼",
-			fold_closed = "▶",
+			fold_open = "",
+			fold_closed = "",
 			indent_lines = false,
 			signs = {
 				error = "error",

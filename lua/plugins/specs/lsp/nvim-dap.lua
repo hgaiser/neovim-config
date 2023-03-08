@@ -46,12 +46,12 @@ return {
 			}
 
 			-- Load launch.json files for additional configurations.
-			require("dap.ext.vscode").load_launchjs()
+			require("dap.ext.vscode").load_launchjs(nil, { lldb = { "rust", "cpp", "c" } })
 		end,
 		keys = function(plugin, opts)
 			dap = require("dap")
 			return {
-				{ "<leader>dl", require("dap.ext.vscode").load_launchjs, desc = "Load launch.json" },
+				{ "<leader>dl", function() require("dap.ext.vscode").load_launchjs(nil, { lldb = { "rust", "cpp", "c" } }) end, desc = "Load launch.json" },
 				{ "<leader>dL", function() vim.fn.mkdir(".vscode", "p"); vim.cmd("vsplit .vscode/launch.json") end, desc = "Edit launch.json" },
 				{ "<leader>dc", dap.continue, desc = "Continue debugging" },
 				{ "<leader>dso", dap.step_over, desc = "Over" },

@@ -4,7 +4,11 @@ return {
 		opts = {
 			contrast = "hard",
 			transparent_mode = true,
-			italic = false,
+			italic = {
+				strings = false,
+				operators = false,
+				comments = false,
+			},
 		},
 		init = function()
 			vim.cmd.colorscheme("gruvbox")

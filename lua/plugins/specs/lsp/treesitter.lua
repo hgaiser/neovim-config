@@ -11,7 +11,7 @@ return {
 			highlight = { enable = true },
 			ensure_installed = {
 				"bash",
-				"help",
+				"vimdoc",
 				"html",
 				"javascript",
 				"json",

@@ -10,23 +10,23 @@ return {
 		config = function(_, opts)
 			local wk = require("which-key")
 			wk.setup(opts)
-			wk.register({
+			wk.add({
 				mode = { "n", "v" },
-				["g"] = { name = "Go" },
+				{ "g", group = "Go" },
 
-				["]"] = { name = "Next" },
-				["]g"] = { name = "Git" },
-				["["] = { name = "Prev" },
-				["[g"] = { name = "Git" },
+				{ "]", group = "Next" },
+				{ "]g", group = "Git" },
+				{ "[", group = "Prev" },
+				{ "[g", group = "Git" },
 
-				["<leader>c"] = { name = "Code" },
-				["<leader>f"] = { name = "Find" },
+				{ "<leader>c", group = "Code" },
+				{ "<leader>f", group = "Find" },
 
-				["<leader>g"] = { name = "Git" },
-				["<leader>gh"] = { name = "Hunk" },
-				["<leader>gb"] = { name = "Buffer" },
+				{ "<leader>g", group = "Git" },
+				{ "<leader>gh", group = "Hunk" },
+				{ "<leader>gb", group = "Buffer" },
 
-				["<leader>d"] = { name = "Debugging" },
+				{ "<leader>d", group = "Debugging" },
 			})
 		end,
 	},
